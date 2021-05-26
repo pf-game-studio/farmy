@@ -1,0 +1,23 @@
+{
+  "name": "farmy",
+  "version": "1.0.0",
+  "description": "jogo de fazendinha",
+  "main": "./dist/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pf-game-studio/farmy.git"
+  },
+  "author": "Eduarda e Guilherme",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/pf-game-studio/farmy/issues"
+  },
+  "homepage": "https://github.com/pf-game-studio/farmy#readme",
+  "devDependencies": {
+    "@types/node": "^15.6.1",
+    "typescript": "^4.2.4"
+  }
+}
