@@ -4,6 +4,7 @@
   "description": "jogo de fazendinha",
   "main": "./dist/index.js",
   "scripts": {
+    "build": "webpack --mode development --config webpack.config.dev.js",
     "serve": "serve dist",
     "start": "nodemon"
   },
@@ -18,7 +19,10 @@
   },
   "homepage": "https://github.com/pf-game-studio/farmy#readme",
   "devDependencies": {
+    "@babel/core": "^7.14.3",
+    "@babel/preset-env": "^7.14.2",
     "@types/node": "^15.6.1",
+    "babel-loader": "^8.2.2",
     "nodemon": "^2.0.7",
     "serve": "^11.3.2",
     "ts-loader": "^9.2.2",
@@ -26,5 +30,8 @@
     "typescript": "^4.2.4",
     "webpack": "^5.37.1",
     "webpack-cli": "^4.7.0"
+  },
+  "dependencies": {
+    "pixi.js": "^6.0.4"
   }
 }
