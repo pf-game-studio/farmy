@@ -1,1 +1,1 @@
-console.log("Hello word");
+console.log("Qualquer coisa batata frita é gostoso por exemplo");
