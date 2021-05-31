@@ -1,5 +1,7 @@
-import { Application, Container, Texture, Sprite } from 'pixi.js';
-import key_manager from './managers/key_manager';
+import { Application, Container, Text } from 'pixi.js';
+import KeyHandler from './event/key_handler';
+import Player from './game_objects/player';
+import Updater from './event/updater';
 
 const app = new Application({
     width: 800,
@@ -14,46 +16,26 @@ const container = new Container();
 
 app.stage.addChild(container);
 
-const texture = Texture.from('./assets/bunny.png');
-
-const bunny = new Sprite(texture);
-bunny.anchor.set(0.5);
-container.addChild(bunny);
-
 container.x = app.screen.width / 2;
 container.y = app.screen.height / 2;
 
 container.pivot.x = container.width / 2;
 container.pivot.y = container.height / 2;
 
-const PLAYER_SPEED = 1;
+const text = new Text('FPS: ', { fontSize: 10 });
 
-const on_key_up = (key: KeyboardEvent) => {
-    key_manager.pop_key(key.key);
-};
+app.stage.addChild(text);
 
-const on_key_down = (key: KeyboardEvent) => {
-    key_manager.add_key(key.key);
-};
+const player = new Player('./assets/cat.png', container);
 
-app.ticker.add((delta) => {
-    key_manager.forEach((key) => {
-        switch (key) {
-            case 'ArrowRight':
-                bunny.x += PLAYER_SPEED * delta;
-                break;
-            case 'ArrowLeft':
-                bunny.x -= PLAYER_SPEED * delta;
-                break;
-            case 'ArrowDown':
-                bunny.y += PLAYER_SPEED * delta;
-                break;
-            case 'ArrowUp':
-                bunny.y -= PLAYER_SPEED * delta;
-                break;
-        }
-    });
+const key_handler = new KeyHandler();
+const updater = new Updater();
+
+key_handler.register(player);
+
+updater.add_updatable(player);
+
+app.ticker.add(delta => {
+    updater.on_update(delta);
+    text.text = `FPS: ${app.ticker.FPS}`;
 });
-
-window.addEventListener('keydown', on_key_down);
-window.addEventListener('keyup', on_key_up);
