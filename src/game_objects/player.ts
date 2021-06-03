@@ -44,7 +44,7 @@ export default class Player extends GameObject implements iKeyRegistrable {
     /**
      * Executa a ação do jogador, quando a tecla de ação é pressionada.
      */
-    on_action(): void {
+    async on_action(): Promise<void> {
         console.log('performing action');
     }
 

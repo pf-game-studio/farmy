@@ -38,6 +38,8 @@ export default class Updater extends Updatable {
      * @param delta tempo desde a última atualização
      */
     async on_update(delta: number): Promise<void> {
-        this.to_update.forEach(updatable => updatable.on_update(delta));
+        await Promise.all(
+            this.to_update.map(updatable => updatable.on_update(delta))
+        );
     }
 }
