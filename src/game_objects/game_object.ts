@@ -17,8 +17,6 @@ export default abstract class GameObject extends Updatable {
         super();
         this.texture = Texture.from(texture_path);
         this.sprite = new Sprite(this.texture);
-        this.sprite.x += Math.random() * 100;
-        this.sprite.y += Math.random() * 100;
 
         parent.addChild(this.sprite);
     }
@@ -79,10 +77,10 @@ export default abstract class GameObject extends Updatable {
         const this_size = this.size();
 
         return (
-            this_pos.x < position.x + size.x &&
-            this_pos.x + this_size.x > position.x &&
-            this_pos.y < position.y + size.y &&
-            this_pos.y + this_size.y > position.y
+            this_pos.x <= position.x + size.x &&
+            this_pos.x + this_size.x >= position.x &&
+            this_pos.y <= position.y + size.y &&
+            this_pos.y + this_size.y >= position.y
         );
     }
 
