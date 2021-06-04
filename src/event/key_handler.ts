@@ -17,7 +17,7 @@ export interface iKeyRegistrable {
  * Interface de listener do teclado. Todos esses objetos podem ser adicionados
  * ao KeyHandler.
  */
-export interface iKeyListener {
+interface iKeyListener {
     /**
      * Deve retornar as teclas que espera receber
      *
@@ -35,21 +35,21 @@ export interface iKeyListener {
  * Possíveis estados do evento de tecla
  */
 export enum eKeyState {
-    down = 'down',
-    up = 'up'
+    down,
+    up
 }
 
 /**
- * Associa um objeto a um handler de tecla estático
+ * Associa um objeto a um handler de tecla estático. O handler de tecla deve
+ * executar a menor função possível, limitando as ações para o método de
+ * atualização assíncrono que não interfere no gameloop.
  *
  * @param obj objeto a ser associado (this)
  * @param handler função ou método estático para associar, deve receber self: T
  * @returns callback de tecla
  */
-export function bind_handler<T>(obj: T, handler: tKeyHandler<T>): tKeyCallback {
-    return state => {
-        handler(obj, state);
-    };
+function bind_handler<T>(obj: T, handler: tKeyHandler<T>): tKeyCallback {
+    return state => handler(obj, state);
 }
 
 /**
@@ -114,12 +114,27 @@ export default class KeyHandler {
 
     /**
      * Adiciona um listener na lista interna. Esse listener receberá eventos de
-     * teclado sempre que o handler for atualizado.
+     * teclado sempre que o handler receber os eventos de tecla do javascript
      *
      * @param listener listener de teclado para ser adicionado
      */
-    add_key_listener(listener: iKeyListener): void {
+    private _add_key_listener(listener: iKeyListener): void {
         this.listeners.push(listener);
+    }
+
+    /**
+     * Adiciona um handler de tecla relacionado a uma tecla.
+     *
+     * @param key tecla para ser associada ao handler
+     * @param obj referência ao objeto que escutará a tecla
+     * @param on_key função que será executada quando a tecla for apertada ou
+     *               solta
+     */
+    add_key_listener<T>(key: string, obj: T, on_key: tKeyHandler<T>): void {
+        this._add_key_listener({
+            key,
+            on_key: bind_handler(obj, on_key)
+        });
     }
 
     /**

@@ -7,7 +7,7 @@ export abstract class Updatable {
      *
      * @param delta tempo que passou desde a última atualização
      */
-    abstract on_update(delta: number): void;
+    abstract on_update(delta: number): Promise<void>;
 }
 
 /**
@@ -37,7 +37,9 @@ export default class Updater extends Updatable {
      *
      * @param delta tempo desde a última atualização
      */
-    on_update(delta: number): void {
-        this.to_update.forEach(updatable => updatable.on_update(delta));
+    async on_update(delta: number): Promise<void> {
+        await Promise.all(
+            this.to_update.map(updatable => updatable.on_update(delta))
+        );
     }
 }
