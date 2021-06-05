@@ -12,6 +12,13 @@ jobs:
     
     steps:
       - uses: actions/checkout@v2.3.4
+
+      - uses: actions/cache@v2
+        with:
+          path: |
+            **/node_modules
+            package-lock.json
+          key: ${{ runner.os }}-modules-${{ hashFiles('**/package.json') }}
       
       - name: Configurando node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v2.1.5
