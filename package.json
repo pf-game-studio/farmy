@@ -5,6 +5,7 @@
   "main": "./dist/index.js",
   "scripts": {
     "build": "webpack --mode development --config webpack.config.dev.js",
+    "build-docs": "typedoc src --exclude **/index.ts",
     "serve": "serve dist",
     "start": "nodemon",
     "test": "jest"
@@ -34,6 +35,7 @@
     "ts-jest": "^27.0.2",
     "ts-loader": "^9.2.2",
     "ts-node": "^10.0.0",
+    "typedoc": "^0.20.36",
     "typescript": "^4.2.4",
     "webpack": "^5.37.1",
     "webpack-cli": "^4.7.0"

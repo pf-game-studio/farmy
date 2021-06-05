@@ -24,13 +24,15 @@ jobs:
         run: |
           npm install
           npm run build
+          npm run build-docs
+          mkdir -p deploy && mv docs/ deploy/docs/ && mv dist deploy/game/
       
       - name: test
         run: |
           npm run test
       
-      - name: Deploy
+      - name: Deploy game
         uses: JamesIves/github-pages-deploy-action@4.1.4
         with:
           branch: gh-pages
-          folder: dist
+          folder: deploy
