@@ -1,0 +1,27 @@
+name: Test
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    strategy:
+      matrix:
+        node-version: [16.3.x]
+        ci_node_total: [1] # Número de processos
+        ci_node_index: [0] # índices dos processos
+    
+    steps:
+      - uses: actions/checkout@v2.3.4
+      
+      - name: Configurando node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v2.1.5
+        with:
+          node-version: ${{ matrix.node-version }}
+          
+      - name: npm install
+        run: |
+          npm install
+      
+      - name: test
+        run: |
+          npm run test
