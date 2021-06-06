@@ -2,13 +2,17 @@ import { Container } from 'pixi.js';
 import KeyHandler, { iKeyRegistrable, eKeyState } from '../event/key_handler';
 import GameObject, { iVector } from './game_object';
 import { ARROWS, KEYBOARD } from '../event/keys';
+import { Updatable } from '../event/updater';
 
 const PLAYER_SPEED = 1;
 
 /**
  * Objeto do jogador
  */
-export default class Player extends GameObject implements iKeyRegistrable {
+export default class Player
+    extends GameObject
+    implements iKeyRegistrable, Updatable
+{
     private speed: iVector;
     private do_action: boolean;
 

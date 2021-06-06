@@ -1,6 +1,6 @@
 import Updater, { Updatable } from '../../src/event/updater';
 
-class AnUpdatable extends Updatable {
+class AnUpdatable implements Updatable {
     private counter: number = 0;
 
     async on_update(delta: number): Promise<void> {
@@ -12,7 +12,7 @@ class AnUpdatable extends Updatable {
     }
 }
 
-class SlowUpdatable extends Updatable {
+class SlowUpdatable implements Updatable {
     private counter: number = 0;
 
     async on_update(delta: number): Promise<void> {

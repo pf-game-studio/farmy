@@ -1,5 +1,4 @@
 import { Container, Sprite, Texture } from 'pixi.js';
-import { Updatable } from '../event/updater';
 
 export interface iVector {
     x: number;
@@ -9,13 +8,16 @@ export interface iVector {
 /**
  * Objeto de jogo. Responsável por lidar com os sprites e textura do pixi.js
  */
-export default abstract class GameObject extends Updatable {
+export default abstract class GameObject {
     protected texture: Texture;
     protected sprite: Sprite;
 
-    constructor(texture_path: string, parent: Container) {
-        super();
-        this.texture = Texture.from(texture_path);
+    constructor(texture: string | Texture, parent: Container) {
+        if (typeof texture == 'string') {
+            this.texture = Texture.from(texture);
+        } else {
+            this.texture = texture;
+        }
         this.sprite = new Sprite(this.texture);
 
         parent.addChild(this.sprite);
