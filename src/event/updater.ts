@@ -1,24 +1,22 @@
 /**
  * Objeto atualizável, que deve implementar on_update
  */
-export abstract class Updatable {
+export interface Updatable {
     /**
      * Atualiza o objeto.
      *
      * @param delta tempo que passou desde a última atualização
      */
-    abstract on_update(delta: number): Promise<void>;
+    on_update(delta: number): Promise<void>;
 }
 
 /**
  * Responsável por atualizar todos os objetos cadastrados na lista interna
  */
-export default class Updater extends Updatable {
+export default class Updater implements Updatable {
     private to_update: Array<Updatable>;
 
     constructor() {
-        super();
-
         this.to_update = [];
     }
 

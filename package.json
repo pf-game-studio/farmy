@@ -25,6 +25,7 @@
     "@babel/preset-env": "^7.14.2",
     "@types/jest": "^26.0.23",
     "@types/node": "^15.6.1",
+    "@types/pixi.js": "^5.0.0",
     "babel-loader": "^8.2.2",
     "canvas": "^2.8.0",
     "jest": "^27.0.4",
