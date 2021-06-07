@@ -67,7 +67,13 @@ export default class Game extends Application {
             .pinch()
             .wheel()
             .decelerate()
-            .clamp({ underflow: 'center', direction: 'all' });
+            .clamp({ underflow: 'center', direction: 'all' })
+            .clampZoom({
+                maxHeight: GLOBALS.screen_height * 2,
+                maxWidth: GLOBALS.screen_width * 2,
+                minHeight: GLOBALS.screen_height / 2,
+                minWidth: GLOBALS.screen_width / 2
+            });
 
         this.stage.addChild(vp);
 
