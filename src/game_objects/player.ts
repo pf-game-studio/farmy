@@ -53,7 +53,6 @@ export default class Player
      */
     async on_action(): Promise<void> {
         console.log('performing action');
-        console.log(this.position());
     }
 
     /**

@@ -25,10 +25,23 @@ export default abstract class GameObject {
     }
 
     /**
-     * @returns posição atual do sprite
+     * @returns posição atual do centro do sprite
      */
-    position(): iVector {
-        return { x: this.sprite.x, y: this.sprite.y };
+    center_position(): iVector {
+        return {
+            x: this.sprite.x + Math.floor(this.size().x / 2),
+            y: this.sprite.y + Math.floor(this.size().y / 2)
+        };
+    }
+
+    /**
+     * @returns posição atual ponto superior esquerdo do sprite
+     */
+    topleft_position(): iVector {
+        return {
+            x: this.sprite.x,
+            y: this.sprite.y
+        };
     }
 
     /**
@@ -36,16 +49,6 @@ export default abstract class GameObject {
      */
     size(): iVector {
         return { x: this.sprite.width, y: this.sprite.height };
-    }
-
-    /**
-     * @returns posição atual do centro do sprite
-     */
-    center_position(): iVector {
-        return {
-            x: this.position().x + this.size().x / 2,
-            y: this.position().y + this.size().y / 2
-        };
     }
 
     /**
@@ -62,7 +65,7 @@ export default abstract class GameObject {
      * @returns verdadeiro se a colisão foi detectada
      */
     collides(other: GameObject): boolean {
-        return this.point_collides(other.position(), other.size());
+        return this.point_collides(other.topleft_position(), other.size());
     }
 
     /**
@@ -76,7 +79,7 @@ export default abstract class GameObject {
     point_collides(position: iVector, size?: iVector): boolean {
         size = size || { x: 0, y: 0 };
 
-        const this_pos = this.position();
+        const this_pos = this.topleft_position();
         const this_size = this.size();
 
         return (
@@ -94,22 +97,32 @@ export default abstract class GameObject {
      * @param delta tempo para aplicar a velocidade
      */
     apply_velocity(vel: iVector, delta: number): void {
-        let next_x = this.sprite.x + vel.x * delta;
-        let next_y = this.sprite.y + vel.y * delta;
+        let x = this.sprite.x + vel.x * delta;
+        let y = this.sprite.y + vel.y * delta;
 
-        if (next_x <= 0) {
-            next_x = 0;
-        } else if (next_x >= GLOBALS.world_width - this.size().x) {
-            next_x = GLOBALS.world_width - this.size().x;
+        if (x <= 0) {
+            x = 0;
+        } else if (x >= GLOBALS.world_width - this.size().x) {
+            x = GLOBALS.world_width - this.size().x;
         }
 
-        if (next_y <= 0) {
-            next_y = 0;
-        } else if (next_y >= GLOBALS.world_height - this.size().y) {
-            next_y = GLOBALS.world_height - this.size().y;
+        if (y <= 0) {
+            y = 0;
+        } else if (y >= GLOBALS.world_height - this.size().y) {
+            y = GLOBALS.world_height - this.size().y;
         }
 
-        this.sprite.x = next_x;
-        this.sprite.y = next_y;
+        this.set_position({ x, y });
+    }
+
+    /**
+     * Seta obrigatoriamente o sprite à posição passada, sem verificar as bordas
+     * do mundo.
+     *
+     * @param pos posição a ser utilizada
+     */
+    protected set_position(pos: iVector) {
+        this.sprite.x = pos.x;
+        this.sprite.y = pos.y;
     }
 }

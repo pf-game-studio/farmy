@@ -25,42 +25,42 @@ const obj = new TestObject(container);
 
 describe('Test GameObjects', () => {
     it('Can detect collision with points', () => {
-        const left_upper_edge: iVector = obj.position();
+        const left_upper_edge: iVector = obj.topleft_position();
         const middle = {
-            x: obj.position().x + obj.size().x / 2,
-            y: obj.position().y + obj.size().y / 2
+            x: obj.topleft_position().x + obj.size().x / 2,
+            y: obj.topleft_position().y + obj.size().y / 2
         };
         const right_upper_edge: iVector = {
-            x: obj.position().x + obj.size().x,
-            y: obj.position().y
+            x: obj.topleft_position().x + obj.size().x,
+            y: obj.topleft_position().y
         };
         const left_lower_edge: iVector = {
-            x: obj.position().x,
-            y: obj.position().y + obj.size().y
+            x: obj.topleft_position().x,
+            y: obj.topleft_position().y + obj.size().y
         };
         const right_lower_edge: iVector = {
-            x: obj.position().x + obj.size().x,
-            y: obj.position().y + obj.size().y
+            x: obj.topleft_position().x + obj.size().x,
+            y: obj.topleft_position().y + obj.size().y
         };
         const outside_left: iVector = {
-            x: obj.position().x + obj.size().x + 1,
-            y: obj.position().y
+            x: obj.topleft_position().x + obj.size().x + 1,
+            y: obj.topleft_position().y
         };
         const outside_right: iVector = {
-            x: obj.position().x - 1,
-            y: obj.position().y
+            x: obj.topleft_position().x - 1,
+            y: obj.topleft_position().y
         };
         const outside_down: iVector = {
-            x: obj.position().x,
-            y: obj.position().y + obj.size().y + 1
+            x: obj.topleft_position().x,
+            y: obj.topleft_position().y + obj.size().y + 1
         };
         const outside_up: iVector = {
-            x: obj.position().x,
-            y: obj.position().y - 1
+            x: obj.topleft_position().x,
+            y: obj.topleft_position().y - 1
         };
         const outside: iVector = {
-            x: obj.position().x + obj.size().x + 1,
-            y: obj.position().y + obj.size().y + 1
+            x: obj.topleft_position().x + obj.size().x + 1,
+            y: obj.topleft_position().y + obj.size().y + 1
         };
 
         expect(obj.point_collides(left_upper_edge)).toBe(true);

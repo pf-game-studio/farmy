@@ -8,7 +8,7 @@ export default class GroundTile extends GameObject {
     constructor(texture: Texture, parent: Container, position: iVector) {
         super(texture, parent);
 
-        this.apply_velocity(position, 1);
+        this.set_position(position);
     }
 
     /**
