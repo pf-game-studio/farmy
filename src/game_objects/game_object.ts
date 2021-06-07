@@ -1,4 +1,5 @@
 import { Container, Sprite, Texture } from 'pixi.js';
+import { GLOBALS } from '../data/globals';
 
 export interface iVector {
     x: number;
@@ -93,7 +94,22 @@ export default abstract class GameObject {
      * @param delta tempo para aplicar a velocidade
      */
     apply_velocity(vel: iVector, delta: number): void {
-        this.sprite.x += vel.x * delta;
-        this.sprite.y += vel.y * delta;
+        let next_x = this.sprite.x + vel.x * delta;
+        let next_y = this.sprite.y + vel.y * delta;
+
+        if (next_x <= 0) {
+            next_x = 0;
+        } else if (next_x >= GLOBALS.world_width - this.size().x) {
+            next_x = GLOBALS.world_width - this.size().x;
+        }
+
+        if (next_y <= 0) {
+            next_y = 0;
+        } else if (next_y >= GLOBALS.world_height - this.size().y) {
+            next_y = GLOBALS.world_height - this.size().y;
+        }
+
+        this.sprite.x = next_x;
+        this.sprite.y = next_y;
     }
 }

@@ -1,8 +1,8 @@
-import { Container } from 'pixi.js';
 import KeyHandler, { iKeyRegistrable, eKeyState } from '../event/key_handler';
 import GameObject, { iVector } from './game_object';
 import { ARROWS, KEYBOARD } from '../event/keys';
 import { Updatable } from '../event/updater';
+import { Viewport } from 'pixi-viewport';
 
 const PLAYER_SPEED = 1;
 
@@ -16,8 +16,11 @@ export default class Player
     private speed: iVector;
     private do_action: boolean;
 
-    constructor(texture_path: string, parent: Container) {
+    constructor(texture_path: string, parent: Viewport, main: boolean) {
         super(texture_path, parent);
+        if (main) {
+            parent.follow(this.sprite);
+        }
 
         this.speed = { x: 0, y: 0 };
         this.do_action = false;
@@ -50,6 +53,7 @@ export default class Player
      */
     async on_action(): Promise<void> {
         console.log('performing action');
+        console.log(this.position());
     }
 
     /**

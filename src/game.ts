@@ -1,4 +1,6 @@
+import { Viewport } from 'pixi-viewport';
 import { SCALE_MODES, settings, Container, Application } from 'pixi.js';
+import { GLOBALS } from './data/globals';
 import default_map_data from './data/map';
 import KeyHandler from './event/key_handler';
 import Updater from './event/updater';
@@ -12,7 +14,7 @@ settings.SCALE_MODE = SCALE_MODES.NEAREST;
  */
 export default class Game extends Application {
     private map_container: Container;
-    private player_container: Container;
+    private camera: Viewport;
 
     private player: Player;
     private updater: Updater;
@@ -21,18 +23,13 @@ export default class Game extends Application {
     private map: GameMap;
 
     constructor() {
-        super({
-            width: 800,
-            height: 600,
-            backgroundColor: 0x1099bb,
-            resolution: window.devicePixelRatio || 1
-        });
+        super();
         this.ticker.stop();
 
-        this.map_container = this.create_map_container();
-        this.player_container = this.create_player_container();
+        this.camera = this.create_camera();
+        this.map_container = this.create_map_container(this.camera);
 
-        this.player = new Player('./assets/cat.png', this.player_container);
+        this.player = new Player('./assets/cat.png', this.camera, true);
         this.map = new GameMap(
             './assets/map.png',
             this.map_container,
@@ -52,33 +49,43 @@ export default class Game extends Application {
     }
 
     /**
-     * Cria e configura o container dos jogadores
+     * Cria e configura a câmera que ficara presa ao jogador principal, todos os
+     * outros conteineres precisam ser filhos dela
      *
-     * @returns container que receberá os jogadores
+     * @returns camera
      */
-    private create_player_container(): Container {
-        const player_cont = new Container();
-        player_cont.x = this.screen.width / 2;
-        player_cont.y = this.screen.height / 2;
-        player_cont.pivot.x = player_cont.width / 2;
-        player_cont.pivot.y = player_cont.height / 2;
+    private create_camera(): Viewport {
+        const vp = new Viewport({
+            screenWidth: GLOBALS.screen_width,
+            screenHeight: GLOBALS.screen_height,
+            worldWidth: GLOBALS.world_width,
+            worldHeight: GLOBALS.world_height,
+            ticker: this.ticker
+        });
 
-        this.stage.addChild(player_cont);
+        vp.drag()
+            .pinch()
+            .wheel()
+            .decelerate()
+            .clamp({ underflow: 'center', direction: 'all' });
 
-        return player_cont;
+        this.stage.addChild(vp);
+
+        return vp;
     }
 
     /**
      * Cria e configura o container do mapa
      *
+     * @param parent onde o container do mapa estará
      * @returns container do mapa
      */
-    private create_map_container(): Container {
+    private create_map_container(parent: Container): Container {
         const map_cont = new Container();
         map_cont.scale.x = 1.5;
         map_cont.scale.y = 1.5;
 
-        this.stage.addChild(map_cont);
+        parent.addChild(map_cont);
 
         return map_cont;
     }
