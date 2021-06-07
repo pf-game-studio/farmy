@@ -124,9 +124,10 @@
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="game_objects_player.default.html#on_action" class="tsd-kind-icon">on_<wbr>action</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="game_objects_player.default.html#on_update" class="tsd-kind-icon">on_<wbr>update</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="game_objects_player.default.html#point_collides" class="tsd-kind-icon">point_<wbr>collides</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="game_objects_player.default.html#position" class="tsd-kind-icon">position</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="game_objects_player.default.html#register" class="tsd-kind-icon">register</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected"><a href="game_objects_player.default.html#set_position" class="tsd-kind-icon">set_<wbr>position</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="game_objects_player.default.html#size" class="tsd-kind-icon">size</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="game_objects_player.default.html#topleft_position" class="tsd-kind-icon">topleft_<wbr>position</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static"><a href="game_objects_player.default.html#a_handler" class="tsd-kind-icon">a_<wbr>handler</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static"><a href="game_objects_player.default.html#action_handler" class="tsd-kind-icon">action_<wbr>handler</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static"><a href="game_objects_player.default.html#d_handler" class="tsd-kind-icon">d_<wbr>handler</a></li>
@@ -143,14 +144,14 @@
 					<a name="constructor" class="tsd-anchor"></a>
 					<h3>constructor</h3>
 					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class tsd-is-overwrite">
-						<li class="tsd-signature tsd-kind-icon">new default<span class="tsd-signature-symbol">(</span>texture_path<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, parent<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Container</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="game_objects_player.default.html" class="tsd-signature-type" data-tsd-kind="Class">default</a></li>
+						<li class="tsd-signature tsd-kind-icon">new default<span class="tsd-signature-symbol">(</span>texture_path<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, parent<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Viewport</span>, main<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="game_objects_player.default.html" class="tsd-signature-type" data-tsd-kind="Class">default</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<p>Overrides <a href="game_objects_game_object.default.html">default</a>.<a href="game_objects_game_object.default.html#constructor">constructor</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pf-game-studio/farmy/blob/6364c09/src/game_objects/player.ts#L17">game_objects/player.ts:17</a></li>
+									<li>Defined in <a href="https://github.com/pf-game-studio/farmy/blob/5dcba93/src/game_objects/player.ts#L17">src/game_objects/player.ts:17</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -159,7 +160,10 @@
 									<h5>texture_path: <span class="tsd-signature-type">string</span></h5>
 								</li>
 								<li>
-									<h5>parent: <span class="tsd-signature-type">Container</span></h5>
+									<h5>parent: <span class="tsd-signature-type">Viewport</span></h5>
+								</li>
+								<li>
+									<h5>main: <span class="tsd-signature-type">boolean</span></h5>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="game_objects_player.default.html" class="tsd-signature-type" data-tsd-kind="Class">default</a></h4>
@@ -175,7 +179,7 @@
 					<div class="tsd-signature tsd-kind-icon">do_<wbr>action<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/pf-game-studio/farmy/blob/6364c09/src/game_objects/player.ts#L17">game_objects/player.ts:17</a></li>
+							<li>Defined in <a href="https://github.com/pf-game-studio/farmy/blob/5dcba93/src/game_objects/player.ts#L17">src/game_objects/player.ts:17</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -185,7 +189,7 @@
 					<div class="tsd-signature tsd-kind-icon">speed<span class="tsd-signature-symbol">:</span> <a href="../interfaces/game_objects_game_object.ivector.html" class="tsd-signature-type" data-tsd-kind="Interface">iVector</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/pf-game-studio/farmy/blob/6364c09/src/game_objects/player.ts#L16">game_objects/player.ts:16</a></li>
+							<li>Defined in <a href="https://github.com/pf-game-studio/farmy/blob/5dcba93/src/game_objects/player.ts#L16">src/game_objects/player.ts:16</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -196,7 +200,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="game_objects_game_object.default.html">default</a>.<a href="game_objects_game_object.default.html#sprite">sprite</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/pf-game-studio/farmy/blob/6364c09/src/game_objects/game_object.ts#L13">game_objects/game_object.ts:13</a></li>
+							<li>Defined in <a href="https://github.com/pf-game-studio/farmy/blob/5dcba93/src/game_objects/game_object.ts#L14">src/game_objects/game_object.ts:14</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -207,7 +211,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="game_objects_game_object.default.html">default</a>.<a href="game_objects_game_object.default.html#texture">texture</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/pf-game-studio/farmy/blob/6364c09/src/game_objects/game_object.ts#L12">game_objects/game_object.ts:12</a></li>
+							<li>Defined in <a href="https://github.com/pf-game-studio/farmy/blob/5dcba93/src/game_objects/game_object.ts#L13">src/game_objects/game_object.ts:13</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -225,7 +229,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="game_objects_game_object.default.html">default</a>.<a href="game_objects_game_object.default.html#apply_velocity">apply_velocity</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pf-game-studio/farmy/blob/6364c09/src/game_objects/game_object.ts#L95">game_objects/game_object.ts:95</a></li>
+									<li>Defined in <a href="https://github.com/pf-game-studio/farmy/blob/5dcba93/src/game_objects/game_object.ts#L99">src/game_objects/game_object.ts:99</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -263,7 +267,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="game_objects_game_object.default.html">default</a>.<a href="game_objects_game_object.default.html#center_position">center_position</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pf-game-studio/farmy/blob/6364c09/src/game_objects/game_object.ts#L43">game_objects/game_object.ts:43</a></li>
+									<li>Defined in <a href="https://github.com/pf-game-studio/farmy/blob/5dcba93/src/game_objects/game_object.ts#L30">src/game_objects/game_object.ts:30</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <a href="../interfaces/game_objects_game_object.ivector.html" class="tsd-signature-type" data-tsd-kind="Interface">iVector</a></h4>
@@ -282,7 +286,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="game_objects_game_object.default.html">default</a>.<a href="game_objects_game_object.default.html#collides">collides</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pf-game-studio/farmy/blob/6364c09/src/game_objects/game_object.ts#L63">game_objects/game_object.ts:63</a></li>
+									<li>Defined in <a href="https://github.com/pf-game-studio/farmy/blob/5dcba93/src/game_objects/game_object.ts#L67">src/game_objects/game_object.ts:67</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -315,7 +319,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="game_objects_game_object.default.html">default</a>.<a href="game_objects_game_object.default.html#get_sprite">get_sprite</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pf-game-studio/farmy/blob/6364c09/src/game_objects/game_object.ts#L53">game_objects/game_object.ts:53</a></li>
+									<li>Defined in <a href="https://github.com/pf-game-studio/farmy/blob/5dcba93/src/game_objects/game_object.ts#L57">src/game_objects/game_object.ts:57</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Sprite</span></h4>
@@ -333,7 +337,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pf-game-studio/farmy/blob/6364c09/src/game_objects/player.ts#L51">game_objects/player.ts:51</a></li>
+									<li>Defined in <a href="https://github.com/pf-game-studio/farmy/blob/5dcba93/src/game_objects/player.ts#L54">src/game_objects/player.ts:54</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -356,7 +360,7 @@
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/event_updater.updatable.html">Updatable</a>.<a href="../interfaces/event_updater.updatable.html#on_update">on_update</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pf-game-studio/farmy/blob/6364c09/src/game_objects/player.ts#L39">game_objects/player.ts:39</a></li>
+									<li>Defined in <a href="https://github.com/pf-game-studio/farmy/blob/5dcba93/src/game_objects/player.ts#L42">src/game_objects/player.ts:42</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -385,7 +389,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="game_objects_game_object.default.html">default</a>.<a href="game_objects_game_object.default.html#point_collides">point_collides</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pf-game-studio/farmy/blob/6364c09/src/game_objects/game_object.ts#L75">game_objects/game_object.ts:75</a></li>
+									<li>Defined in <a href="https://github.com/pf-game-studio/farmy/blob/5dcba93/src/game_objects/game_object.ts#L79">src/game_objects/game_object.ts:79</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -414,25 +418,6 @@
 						</li>
 					</ul>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-					<a name="position" class="tsd-anchor"></a>
-					<h3>position</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-						<li class="tsd-signature tsd-kind-icon">position<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/game_objects_game_object.ivector.html" class="tsd-signature-type" data-tsd-kind="Interface">iVector</a></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<p>Inherited from <a href="game_objects_game_object.default.html">default</a>.<a href="game_objects_game_object.default.html#position">position</a></p>
-								<ul>
-									<li>Defined in <a href="https://github.com/pf-game-studio/farmy/blob/6364c09/src/game_objects/game_object.ts#L29">game_objects/game_object.ts:29</a></li>
-								</ul>
-							</aside>
-							<h4 class="tsd-returns-title">Returns <a href="../interfaces/game_objects_game_object.ivector.html" class="tsd-signature-type" data-tsd-kind="Interface">iVector</a></h4>
-							<p>posição atual do sprite</p>
-						</li>
-					</ul>
-				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
 					<a name="register" class="tsd-anchor"></a>
 					<h3>register</h3>
@@ -444,7 +429,7 @@
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/event_key_handler.ikeyregistrable.html">iKeyRegistrable</a>.<a href="../interfaces/event_key_handler.ikeyregistrable.html#register">register</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pf-game-studio/farmy/blob/6364c09/src/game_objects/player.ts#L31">game_objects/player.ts:31</a></li>
+									<li>Defined in <a href="https://github.com/pf-game-studio/farmy/blob/5dcba93/src/game_objects/player.ts#L34">src/game_objects/player.ts:34</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -465,6 +450,39 @@
 						</li>
 					</ul>
 				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+					<a name="set_position" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagProtected">Protected</span> set_<wbr>position</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+						<li class="tsd-signature tsd-kind-icon">set_<wbr>position<span class="tsd-signature-symbol">(</span>pos<span class="tsd-signature-symbol">: </span><a href="../interfaces/game_objects_game_object.ivector.html" class="tsd-signature-type" data-tsd-kind="Interface">iVector</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="game_objects_game_object.default.html">default</a>.<a href="game_objects_game_object.default.html#set_position">set_position</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/pf-game-studio/farmy/blob/5dcba93/src/game_objects/game_object.ts#L124">src/game_objects/game_object.ts:124</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Seta obrigatoriamente o sprite à posição passada, sem verificar as bordas
+									do mundo.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>pos: <a href="../interfaces/game_objects_game_object.ivector.html" class="tsd-signature-type" data-tsd-kind="Interface">iVector</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>posição a ser utilizada</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
 					<a name="size" class="tsd-anchor"></a>
 					<h3>size</h3>
@@ -476,11 +494,30 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="game_objects_game_object.default.html">default</a>.<a href="game_objects_game_object.default.html#size">size</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pf-game-studio/farmy/blob/6364c09/src/game_objects/game_object.ts#L36">game_objects/game_object.ts:36</a></li>
+									<li>Defined in <a href="https://github.com/pf-game-studio/farmy/blob/5dcba93/src/game_objects/game_object.ts#L50">src/game_objects/game_object.ts:50</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <a href="../interfaces/game_objects_game_object.ivector.html" class="tsd-signature-type" data-tsd-kind="Interface">iVector</a></h4>
 							<p>tamanho do sprite</p>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+					<a name="topleft_position" class="tsd-anchor"></a>
+					<h3>topleft_<wbr>position</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+						<li class="tsd-signature tsd-kind-icon">topleft_<wbr>position<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/game_objects_game_object.ivector.html" class="tsd-signature-type" data-tsd-kind="Interface">iVector</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="game_objects_game_object.default.html">default</a>.<a href="game_objects_game_object.default.html#topleft_position">topleft_position</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/pf-game-studio/farmy/blob/5dcba93/src/game_objects/game_object.ts#L40">src/game_objects/game_object.ts:40</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/game_objects_game_object.ivector.html" class="tsd-signature-type" data-tsd-kind="Interface">iVector</a></h4>
+							<p>posição atual ponto superior esquerdo do sprite</p>
 						</li>
 					</ul>
 				</section>
@@ -494,7 +531,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pf-game-studio/farmy/blob/6364c09/src/game_objects/player.ts#L95">game_objects/player.ts:95</a></li>
+									<li>Defined in <a href="https://github.com/pf-game-studio/farmy/blob/5dcba93/src/game_objects/player.ts#L98">src/game_objects/player.ts:98</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -531,7 +568,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pf-game-studio/farmy/blob/6364c09/src/game_objects/player.ts#L129">game_objects/player.ts:129</a></li>
+									<li>Defined in <a href="https://github.com/pf-game-studio/farmy/blob/5dcba93/src/game_objects/player.ts#L132">src/game_objects/player.ts:132</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -568,7 +605,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pf-game-studio/farmy/blob/6364c09/src/game_objects/player.ts#L112">game_objects/player.ts:112</a></li>
+									<li>Defined in <a href="https://github.com/pf-game-studio/farmy/blob/5dcba93/src/game_objects/player.ts#L115">src/game_objects/player.ts:115</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -605,7 +642,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pf-game-studio/farmy/blob/6364c09/src/game_objects/player.ts#L78">game_objects/player.ts:78</a></li>
+									<li>Defined in <a href="https://github.com/pf-game-studio/farmy/blob/5dcba93/src/game_objects/player.ts#L81">src/game_objects/player.ts:81</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -642,7 +679,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pf-game-studio/farmy/blob/6364c09/src/game_objects/player.ts#L61">game_objects/player.ts:61</a></li>
+									<li>Defined in <a href="https://github.com/pf-game-studio/farmy/blob/5dcba93/src/game_objects/player.ts#L64">src/game_objects/player.ts:64</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -678,6 +715,9 @@
 						<a href="../modules.html">Exports</a>
 					</li>
 					<li class=" tsd-kind-module">
+						<a href="../modules/data_globals.html">data/globals</a>
+					</li>
+					<li class=" tsd-kind-module">
 						<a href="../modules/data_map.html">data/map</a>
 					</li>
 					<li class=" tsd-kind-module">
@@ -688,6 +728,9 @@
 					</li>
 					<li class=" tsd-kind-module">
 						<a href="../modules/event_updater.html">event/updater</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/game.html">game</a>
 					</li>
 					<li class=" tsd-kind-module">
 						<a href="../modules/game_objects_game_map.html">game_<wbr>objects/game_<wbr>map</a>
@@ -746,14 +789,17 @@
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
 								<a href="game_objects_player.default.html#point_collides" class="tsd-kind-icon">point_<wbr>collides</a>
 							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-								<a href="game_objects_player.default.html#position" class="tsd-kind-icon">position</a>
-							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="game_objects_player.default.html#register" class="tsd-kind-icon">register</a>
 							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+								<a href="game_objects_player.default.html#set_position" class="tsd-kind-icon">set_<wbr>position</a>
+							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
 								<a href="game_objects_player.default.html#size" class="tsd-kind-icon">size</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+								<a href="game_objects_player.default.html#topleft_position" class="tsd-kind-icon">topleft_<wbr>position</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static">
 								<a href="game_objects_player.default.html#a_handler" class="tsd-kind-icon">a_<wbr>handler</a>
