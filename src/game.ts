@@ -5,7 +5,7 @@ import default_map_data from './data/map';
 import KeyHandler from './event/key_handler';
 import Updater from './event/updater';
 import GameMap from './game_objects/game_map';
-import Player from './game_objects/player';
+import Player from './game_objects/entities/player';
 
 settings.SCALE_MODE = SCALE_MODES.NEAREST;
 

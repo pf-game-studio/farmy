@@ -1,10 +1,10 @@
 import { Container, Texture } from 'pixi.js';
-import GameObject, { iVector } from './game_object';
+import Entity, { iVector } from './entity';
 
 /**
  * Objeto para representar um tile no chão
  */
-export default class GroundTile extends GameObject {
+export default class GroundTile extends Entity {
     constructor(texture: Texture, parent: Container, position: iVector) {
         super(texture, parent);
 
