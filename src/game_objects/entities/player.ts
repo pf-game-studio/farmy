@@ -13,6 +13,16 @@ import { Item } from '../items/item';
 const PLAYER_SPEED = 1;
 
 /**
+ * Direções que o jogador está olhando
+ */
+enum ePlayerDirection {
+    left,
+    right,
+    up,
+    down
+}
+
+/**
  * Objeto do jogador
  */
 export default class Player
@@ -22,6 +32,7 @@ export default class Player
     private speed: iVector;
     private do_action: boolean;
     private inventory: Inventory;
+    private direction: ePlayerDirection;
 
     constructor(texture_path: string, parent: Viewport, main: boolean) {
         super(texture_path, parent);
@@ -29,6 +40,7 @@ export default class Player
             parent.follow(this.sprite);
         }
 
+        this.direction = ePlayerDirection.right;
         this.speed = { x: 0, y: 0 };
         this.do_action = false;
         this.inventory = new Inventory(default_inventory_data, parent.parent);
@@ -64,7 +76,7 @@ export default class Player
     async on_action(): Promise<void> {
         try {
             const item: Item = this.inventory.selected_item();
-            console.log(`performing action on item ${item}`);
+            console.log(`performing action on item ${item} on direction ${this.direction}`);
         } catch (error) {}
     }
 
@@ -78,6 +90,7 @@ export default class Player
         switch (state) {
             case eKeyState.down:
                 self.speed.y -= PLAYER_SPEED;
+                self.direction = ePlayerDirection.up;
                 break;
             case eKeyState.up:
                 self.speed.y += PLAYER_SPEED;
@@ -95,6 +108,7 @@ export default class Player
         switch (state) {
             case eKeyState.down:
                 self.speed.y += PLAYER_SPEED;
+                self.direction = ePlayerDirection.down;
                 break;
             case eKeyState.up:
                 self.speed.y -= PLAYER_SPEED;
@@ -112,6 +126,7 @@ export default class Player
         switch (state) {
             case eKeyState.down:
                 self.speed.x -= PLAYER_SPEED;
+                self.direction = ePlayerDirection.left;
                 break;
             case eKeyState.up:
                 self.speed.x += PLAYER_SPEED;
@@ -129,6 +144,7 @@ export default class Player
         switch (state) {
             case eKeyState.down:
                 self.speed.x += PLAYER_SPEED;
+                self.direction = ePlayerDirection.right;
                 break;
             case eKeyState.up:
                 self.speed.x -= PLAYER_SPEED;
