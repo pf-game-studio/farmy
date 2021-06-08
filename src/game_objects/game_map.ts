@@ -1,6 +1,6 @@
 import { Loader, Container, Rectangle, Texture, BaseTexture } from 'pixi.js';
-import { iVector } from './game_object';
-import GroundTile from './ground_tile';
+import { iVector } from './entities/entity';
+import GroundTile from './entities/ground_tile';
 
 /**
  * Dados gerais do mapa, será usado para salvar o estado atual do jogo

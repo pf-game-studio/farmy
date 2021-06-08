@@ -1,5 +1,5 @@
 import { Container, Sprite, Texture } from 'pixi.js';
-import { GLOBALS } from '../data/globals';
+import { GLOBALS } from '../../data/globals';
 
 export interface iVector {
     x: number;
@@ -7,9 +7,10 @@ export interface iVector {
 }
 
 /**
- * Objeto de jogo. Responsável por lidar com os sprites e textura do pixi.js
+ * Entidades no jogo (aparecem no mapa). Responsável por lidar com os sprites e
+ * textura do pixi.js
  */
-export default abstract class GameObject {
+export default abstract class Entity {
     protected texture: Texture;
     protected sprite: Sprite;
 
@@ -64,7 +65,7 @@ export default abstract class GameObject {
      * @param other outro objeto qualquer
      * @returns verdadeiro se a colisão foi detectada
      */
-    collides(other: GameObject): boolean {
+    collides(other: Entity): boolean {
         return this.point_collides(other.topleft_position(), other.size());
     }
 
