@@ -7,6 +7,16 @@ import { Viewport } from 'pixi-viewport';
 const PLAYER_SPEED = 1;
 
 /**
+ * Direções que o jogador está olhando
+ */
+enum ePlayerDirection {
+    left,
+    right,
+    up,
+    down
+}
+
+/**
  * Objeto do jogador
  */
 export default class Player
@@ -15,6 +25,7 @@ export default class Player
 {
     private speed: iVector;
     private do_action: boolean;
+    private direction: ePlayerDirection;
 
     constructor(texture_path: string, parent: Viewport, main: boolean) {
         super(texture_path, parent);
@@ -22,6 +33,7 @@ export default class Player
             parent.follow(this.sprite);
         }
 
+        this.direction = ePlayerDirection.right;
         this.speed = { x: 0, y: 0 };
         this.do_action = false;
     }
@@ -52,7 +64,7 @@ export default class Player
      * Executa a ação do jogador, quando a tecla de ação é pressionada.
      */
     async on_action(): Promise<void> {
-        console.log('performing action');
+        console.log(`performing action on direction ${this.direction}`);
     }
 
     /**
@@ -65,6 +77,7 @@ export default class Player
         switch (state) {
             case eKeyState.down:
                 self.speed.y -= PLAYER_SPEED;
+                self.direction = ePlayerDirection.up;
                 break;
             case eKeyState.up:
                 self.speed.y += PLAYER_SPEED;
@@ -82,6 +95,7 @@ export default class Player
         switch (state) {
             case eKeyState.down:
                 self.speed.y += PLAYER_SPEED;
+                self.direction = ePlayerDirection.down;
                 break;
             case eKeyState.up:
                 self.speed.y -= PLAYER_SPEED;
@@ -99,6 +113,7 @@ export default class Player
         switch (state) {
             case eKeyState.down:
                 self.speed.x -= PLAYER_SPEED;
+                self.direction = ePlayerDirection.left;
                 break;
             case eKeyState.up:
                 self.speed.x += PLAYER_SPEED;
@@ -116,6 +131,7 @@ export default class Player
         switch (state) {
             case eKeyState.down:
                 self.speed.x += PLAYER_SPEED;
+                self.direction = ePlayerDirection.right;
                 break;
             case eKeyState.up:
                 self.speed.x -= PLAYER_SPEED;
