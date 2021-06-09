@@ -1,7 +1,7 @@
 import { Viewport } from 'pixi-viewport';
 import { SCALE_MODES, settings, Container, Application } from 'pixi.js';
 import { GLOBALS } from './data/globals';
-import default_map_data from './data/map';
+import default_map_data from './data/default_map';
 import KeyHandler from './event/key_handler';
 import Updater from './event/updater';
 import GameMap from './game_objects/game_map';
@@ -23,7 +23,7 @@ export default class Game extends Application {
     private map: GameMap;
 
     constructor() {
-        super();
+        super({ backgroundColor: 0x87cefa });
         this.ticker.stop();
 
         this.camera = this.create_camera();
