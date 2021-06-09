@@ -6,6 +6,9 @@ import Entity, { iVector } from './entity';
 import { ARROWS, KEYBOARD } from '../../event/keys';
 import { Updatable } from '../../event/updater';
 import { Viewport } from 'pixi-viewport';
+import Inventory from '../inventory';
+import default_inventory_data from '../../data/default_inventory';
+import { Item } from '../items/item';
 
 const PLAYER_SPEED = 1;
 
@@ -18,6 +21,7 @@ export default class Player
 {
     private speed: iVector;
     private do_action: boolean;
+    private inventory: Inventory;
 
     constructor(texture_path: string, parent: Viewport, main: boolean) {
         super(texture_path, parent);
@@ -27,6 +31,7 @@ export default class Player
 
         this.speed = { x: 0, y: 0 };
         this.do_action = false;
+        this.inventory = new Inventory(default_inventory_data, parent.parent);
     }
 
     /**
@@ -39,7 +44,9 @@ export default class Player
         key_handler.add_key_listener(ARROWS.A, this, Player.a_handler);
         key_handler.add_key_listener(ARROWS.S, this, Player.s_handler);
         key_handler.add_key_listener(ARROWS.D, this, Player.d_handler);
-        key_handler.add_key_listener(KEYBOARD.E, this, Player.action_handler);
+        key_handler.add_key_listener(KEYBOARD.E, this, Player.e_handler);
+        key_handler.add_key_listener(KEYBOARD.Q, this, Player.q_handler);
+        key_handler.add_key_listener(KEYBOARD.F, this, Player.action_handler);
     }
 
     async on_update(delta: number): Promise<void> {
@@ -55,11 +62,14 @@ export default class Player
      * Executa a ação do jogador, quando a tecla de ação é pressionada.
      */
     async on_action(): Promise<void> {
-        console.log('performing action');
+        try {
+            const item: Item = this.inventory.selected_item();
+            console.log(`performing action on item ${item}`);
+        } catch (error) {}
     }
 
     /**
-     * Handler da tecla w
+     * Handler da tecla w - move para cima
      *
      * @param self this
      * @param state estado atual da tecla
@@ -76,7 +86,7 @@ export default class Player
     }
 
     /**
-     * Handler da tecla s
+     * Handler da tecla s - move para baixo
      *
      * @param self this
      * @param state estado atual da tecla
@@ -93,7 +103,7 @@ export default class Player
     }
 
     /**
-     * handler da tecla a
+     * handler da tecla a - move para a esquerda
      *
      * @param self this
      * @param state estado atual da tecla
@@ -110,7 +120,7 @@ export default class Player
     }
 
     /**
-     * Handler da tecla d
+     * Handler da tecla d - move para a direita
      *
      * @param self this
      * @param state estado atual da tecla
@@ -127,18 +137,38 @@ export default class Player
     }
 
     /**
+     * Handler da tecla e - incrementa o cursor do inventário
+     *
+     * @param self this
+     * @param state estado atual da tecla
+     */
+    private static e_handler(self: Player, state: eKeyState): void {
+        if (state == eKeyState.up) {
+            self.inventory.increment_cursor();
+        }
+    }
+
+    /**
+     * Handler da tecla q - decrementa o cursor do inventário
+     *
+     * @param self this
+     * @param state estado atual da tecla
+     */
+    private static q_handler(self: Player, state: eKeyState): void {
+        if (state == eKeyState.down) {
+            self.inventory.decrement_cursor();
+        }
+    }
+
+    /**
      * Handler da tecla de ação
      *
      * @param self this
      * @param state estado atual da tecla
      */
     private static action_handler(self: Player, state: eKeyState): void {
-        switch (state) {
-            case eKeyState.down:
-                break;
-            case eKeyState.up:
-                self.do_action = true;
-                break;
+        if (state == eKeyState.down) {
+            self.do_action = true;
         }
     }
 }
