@@ -1,11 +1,11 @@
 import { Application, Container, utils } from 'pixi.js';
-import GameObject, { iVector } from '../../src/game_objects/game_object';
+import Entity, { iVector } from '../../../src/game_objects/entities/entity';
 
-class TestObject extends GameObject {
+class TestObject extends Entity {
     async on_update(_delta: number): Promise<void> {}
 
     constructor(parent: Container) {
-        super(`${__dirname}/cat.png`, parent);
+        super(`${__dirname}/../cat.png`, parent);
     }
 }
 
@@ -23,7 +23,7 @@ app.stage.addChild(container);
 
 const obj = new TestObject(container);
 
-describe('Test GameObjects', () => {
+describe('Test Entities', () => {
     it('Can detect collision with points', () => {
         const left_upper_edge: iVector = obj.topleft_position();
         const middle = {

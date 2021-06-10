@@ -6,7 +6,9 @@ const ARROWS = {
 };
 
 const KEYBOARD = {
-    E: 'e'
+    E: 'e',
+    Q: 'q',
+    F: 'f'
 };
 
 export { ARROWS, KEYBOARD };
