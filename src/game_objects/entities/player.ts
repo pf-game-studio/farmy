@@ -31,8 +31,8 @@ export default class Player
 {
     private speed: iVector;
     private do_action: boolean;
-    private inventory: Inventory;
     private direction: ePlayerDirection;
+    private inventory: Inventory;
 
     constructor(texture_path: string, parent: Viewport, main: boolean) {
         super(texture_path, parent);
@@ -76,7 +76,9 @@ export default class Player
     async on_action(): Promise<void> {
         try {
             const item: Item = this.inventory.selected_item();
-            console.log(`performing action on item ${item} on direction ${this.direction}`);
+            console.log(
+                `performing action on item ${item}, on direction ${this.direction}`
+            );
         } catch (error) {}
     }
 
