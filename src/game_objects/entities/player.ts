@@ -76,7 +76,9 @@ export default class Player
     async on_action(): Promise<void> {
         try {
             const item: Item = this.inventory.selected_item();
-            console.log(`performing action on item ${item}`);
+            console.log(
+                `performing action on item ${item}, on direction ${this.direction}`
+            );
         } catch (error) {}
     }
 

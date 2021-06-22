@@ -1,11 +1,13 @@
 import { Item } from './item';
-import Hoe from './hoe';
+import Can from './tools/can';
+import Hoe from './tools/hoe';
 
 /**
  * Enumerado de todos os ids de itens
  */
 export enum eItemId {
     hoe = 1,
+    can,
 
     null = 255
 }
@@ -14,7 +16,8 @@ export enum eItemId {
  * Lookup table que traduz um id de item em um item
  */
 const item_type_lut = {
-    [eItemId.hoe]: Hoe
+    [eItemId.hoe]: Hoe,
+    [eItemId.can]: Can
 };
 
 /**
