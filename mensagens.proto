@@ -1,0 +1,69 @@
+syntax = "proto3";
+
+/**
+ *
+ * Todas as mensagens enviadas no protocolo utilizam o formato json, similar à
+ * especificação de jsonrpc (https://www.jsonrpc.org/specification). Sempre que
+ * um cliente requisita algo ao servidor, é enviado um json, contendo cabeçalho
+ * e corpo da requisição.
+ *
+ * O cabeçalho da requisição contém apenas o método a ser invocado, Register por
+ * exemplo. O corpo da requisição é um objeto que contém os parâmetros dos
+ * métodos.
+ *
+ */
+message Message {
+    string header = 1;
+    oneof params {
+        Register    reg_params      = 2;
+        Nack        nack_params     = 3;
+        RAck        rack_params     = 4;
+    }
+}
+
+
+// =============================================================================
+// =================================REQUISIÇÕES=================================
+// =============================================================================
+
+/** 
+ *  A mensagem de registro possui um usuário, senha e um identificador único das
+ *  salas (namespaces). Quando o identificador de sala não é utilizado, o
+ *  servidor cria uma nova.
+ */
+message Register {
+    string username = 1;
+    string password = 2;
+}
+
+// =============================================================================
+// ==================================respostas==================================
+// =============================================================================
+
+/**
+ *  Servidor responde quando dá algo errado. O campo reason pode assumir os
+ *  valores definidos em um enumerado, e são:
+ *
+ *
+ *  invalid_auth = 1;   Usuário ou senha estão errados ou não encontrados
+ *  invalid_token = 2;  Token único não reconhecido.
+ *
+ *
+ *
+ */
+message Nack {
+    uint32 reason = 1;
+}
+
+/**
+ *  Resposta genérica de reconhecimento pelo servidor.
+ */
+message Ack {}
+
+/**
+ *  Resposta de reconhecimento do servidor para a requisição de registro, possui
+ *  o webtoken único gerado para este cliente
+ */
+message RAck {
+    string token = 1;
+}
