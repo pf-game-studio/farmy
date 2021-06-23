@@ -29,11 +29,16 @@ export default class Game extends Application {
         this.camera = this.create_camera();
         this.map_container = this.create_map_container(this.camera);
 
-        this.player = new Player('./assets/cat.png', this.camera, true);
         this.map = new GameMap(
             './assets/map.png',
             this.map_container,
             default_map_data
+        );
+        this.player = new Player(
+            './assets/cat.png',
+            this.map,
+            this.camera,
+            true
         );
         this.key_handler = new KeyHandler();
         this.updater = new Updater();
@@ -88,8 +93,6 @@ export default class Game extends Application {
      */
     private create_map_container(parent: Container): Container {
         const map_cont = new Container();
-        map_cont.scale.x = 1.5;
-        map_cont.scale.y = 1.5;
 
         parent.addChild(map_cont);
 

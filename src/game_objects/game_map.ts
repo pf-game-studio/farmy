@@ -1,6 +1,7 @@
 import { Loader, Container, Rectangle, Texture, BaseTexture } from 'pixi.js';
 import { iVector } from './entities/entity';
 import GroundTile from './entities/ground_tile';
+import { Tool } from './items/item';
 
 /**
  * Dados gerais do mapa, será usado para salvar o estado atual do jogo
@@ -37,6 +38,48 @@ export default class GameMap {
     }
 
     /**
+     * @returns textura de uma terra arada
+     */
+    get_plowed_texture(): Texture {
+        const texture: Texture | undefined = this.tile_textures[67];
+        if (!texture) {
+            throw 'Texture not found';
+        }
+        return texture;
+    }
+
+    /**
+     * Interação de uma ferramenta com o mapa
+     *
+     * @param tool ferramenta que vai interagir
+     * @param pos posição que está interagindo
+     */
+    interact(tool: Tool, pos: iVector): void {
+        this.get_obj_at(pos).interact(tool);
+    }
+
+    /**
+     * Retorna o objeto do chão em uma determinada posição, em coordenadas do mapa
+     *
+     * @todo arrumar os outros métodos
+     * @throws caso não exista um objeto do chão em uma posição
+     * @param pos posição que se deve retornar
+     * @returns objeto na posição
+     */
+    get_obj_at(pos: iVector): GroundTile {
+        let tile: GroundTile | undefined;
+        this.ground_tiles.forEach(ground_tile => {
+            if (ground_tile.point_collides(pos)) {
+                tile = ground_tile;
+            }
+        });
+        if (!tile) {
+            throw `Tile not found at position x=${pos.x} y=${pos.y}`;
+        }
+        return tile;
+    }
+
+    /**
      * Renderiza o mapa, criando todos os tiles e associando-os ao container
      */
     private render(): void {
@@ -44,11 +87,23 @@ export default class GameMap {
             const x: number = idx % this.data.width;
             const y: number = Math.floor(idx / this.data.width);
 
+            const plowable: boolean =
+                x != this.data.width - 1 &&
+                x != 0 &&
+                y != this.data.height - 1 &&
+                y != 0;
+
             this.ground_tiles.push(
-                new GroundTile(this.get_texture(val), this.parent, {
-                    x: x * this.data.tile_size,
-                    y: y * this.data.tile_size
-                })
+                new GroundTile(
+                    this.get_texture(val),
+                    this,
+                    this.parent,
+                    {
+                        x: x * this.data.tile_size,
+                        y: y * this.data.tile_size
+                    },
+                    plowable
+                )
             );
         });
     }
@@ -77,49 +132,40 @@ export default class GameMap {
         }
     }
 
-    /**
-     * Retorna o objeto do chão em uma determinada posição, em coordenadas do mapa
-     *
-     * @throws caso não exista um objeto do chão em uma posição
-     * @param pos posição que se deve retornar
-     * @returns objeto na posição
-     */
-    get_obj_at(pos: iVector): GroundTile {
-        return this.get_obj_at_normalized({
-            x: Math.floor(pos.x / this.data.tile_size),
-            y: Math.floor(pos.y / this.data.tile_size)
-        });
-    }
+    // /**
+    //  * Retorna o objeto do chão em uma posição normalizada em relação ao tamanho
+    //  * dos sprites.
+    //  *
+    //  * @throws caso não exista um objeto do chão em uma posição
+    //  * @param pos posição normalizada para se encontrar o objeto
+    //  * @returns objeto na posição normalizada
+    //  */
+    // private get_obj_at_normalized(pos: iVector): GroundTile {
+    //     if (pos.x < 0 || pos.x >= this.data.width) {
+    //         throw `Object cannot be accessed at x=${pos.x}`;
+    //     } else if (pos.y < 0 || pos.y >= this.data.height) {
+    //         throw `Object cannot be accessed at y=${pos.y}`;
+    //     }
+    //     return this.get_obj_by_idx(pos.y * this.data.tile_size + pos.x);
+    // }
 
-    /**
-     * Retorna o objeto do chão em uma posição normalizada em relação ao tamanho
-     * dos sprites.
-     *
-     * @throws caso não exista um objeto do chão em uma posição
-     * @param pos posição normalizada para se encontrar o objeto
-     * @returns objeto na posição normalizada
-     */
-    private get_obj_at_normalized(pos: iVector): GroundTile {
-        return this.get_obj_by_idx(pos.y * this.data.tile_size + pos.x);
-    }
+    // /**
+    //  * Retorna o objeto do chão em um índice no vetor, garantindo que não seja
+    //  * undefined.
+    //  *
+    //  * @throws caso o índice não seja válido no array
+    //  * @param idx índice do array
+    //  * @returns objeto no índice, garantido que não é undefined
+    //  */
+    // private get_obj_by_idx(idx: number): GroundTile {
+    //     const obj: GroundTile | undefined = this.ground_tiles[idx];
 
-    /**
-     * Retorna o objeto do chão em um índice no vetor, garantindo que não seja
-     * undefined.
-     *
-     * @throws caso o índice não seja válido no array
-     * @param idx índice do array
-     * @returns objeto no índice, garantido que não é undefined
-     */
-    private get_obj_by_idx(idx: number): GroundTile {
-        const obj: GroundTile | undefined = this.ground_tiles[idx];
+    //     if (!obj) {
+    //         throw `GroundTile not found at idx=${idx}`;
+    //     }
 
-        if (!obj) {
-            throw `GroundTile not found at idx=${idx}`;
-        }
-
-        return obj;
-    }
+    //     return obj;
+    // }
 
     /**
      * Retorna uma textura pelo índice do array

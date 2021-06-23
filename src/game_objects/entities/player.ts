@@ -8,7 +8,9 @@ import { Updatable } from '../../event/updater';
 import { Viewport } from 'pixi-viewport';
 import Inventory from '../inventory';
 import default_inventory_data from '../../data/default_inventory';
-import { Item } from '../items/item';
+import default_map from '../../data/default_map';
+import { Item, Tool } from '../items/item';
+import GameMap from '../game_map';
 
 const PLAYER_SPEED = 1;
 
@@ -33,13 +35,20 @@ export default class Player
     private do_action: boolean;
     private inventory: Inventory;
     private direction: ePlayerDirection;
+    private map: GameMap;
 
-    constructor(texture_path: string, parent: Viewport, main: boolean) {
+    constructor(
+        texture_path: string,
+        map: GameMap,
+        parent: Viewport,
+        main: boolean
+    ) {
         super(texture_path, parent);
         if (main) {
             parent.follow(this.sprite);
         }
 
+        this.map = map;
         this.direction = ePlayerDirection.right;
         this.speed = { x: 0, y: 0 };
         this.do_action = false;
@@ -74,12 +83,62 @@ export default class Player
      * Executa a ação do jogador, quando a tecla de ação é pressionada.
      */
     async on_action(): Promise<void> {
-        try {
-            const item: Item = this.inventory.selected_item();
-            console.log(
-                `performing action on item ${item}, on direction ${this.direction}`
-            );
-        } catch (error) {}
+        // try {
+        const item: Item = this.inventory.selected_item();
+        console.log(
+            `posição de interação ${this.interaction_position().x} ${
+                this.interaction_position().y
+            }`
+        );
+        console.log(
+            `posição do jogador ${this.center_position().x} ${
+                this.center_position().y
+            }`
+        );
+        if (item instanceof Tool) {
+            this.map.interact(item, this.interaction_position());
+        }
+        // } catch (error) {}
+    }
+
+    /**
+     * Atualiza a direção do jogador com base na velocidade atual
+     */
+    private update_direction(): void {
+        if (this.speed.x > 0) {
+            this.direction = ePlayerDirection.right;
+        } else if (this.speed.x < 0) {
+            this.direction = ePlayerDirection.left;
+        } else if (this.speed.y > 0) {
+            this.direction = ePlayerDirection.down;
+        } else if (this.speed.y < 0) {
+            this.direction = ePlayerDirection.up;
+        }
+    }
+
+    /**
+     * Posição de interação do jogador, é a posição 1 tile do mapa para frente
+     * de onde o jogador está olhando.
+     *
+     * @returns vetor da posição
+     */
+    private interaction_position(): iVector {
+        const delta: iVector = this.center_position();
+        switch (this.direction) {
+            case ePlayerDirection.down:
+                delta.y += default_map.tile_size;
+                break;
+            case ePlayerDirection.up:
+                delta.y -= default_map.tile_size;
+                break;
+            case ePlayerDirection.left:
+                delta.x -= default_map.tile_size;
+                break;
+            case ePlayerDirection.right:
+                delta.x += default_map.tile_size;
+                break;
+        }
+        return delta;
     }
 
     /**
@@ -92,12 +151,12 @@ export default class Player
         switch (state) {
             case eKeyState.down:
                 self.speed.y -= PLAYER_SPEED;
-                self.direction = ePlayerDirection.up;
                 break;
             case eKeyState.up:
                 self.speed.y += PLAYER_SPEED;
                 break;
         }
+        self.update_direction();
     }
 
     /**
@@ -110,12 +169,12 @@ export default class Player
         switch (state) {
             case eKeyState.down:
                 self.speed.y += PLAYER_SPEED;
-                self.direction = ePlayerDirection.down;
                 break;
             case eKeyState.up:
                 self.speed.y -= PLAYER_SPEED;
                 break;
         }
+        self.update_direction();
     }
 
     /**
@@ -128,12 +187,12 @@ export default class Player
         switch (state) {
             case eKeyState.down:
                 self.speed.x -= PLAYER_SPEED;
-                self.direction = ePlayerDirection.left;
                 break;
             case eKeyState.up:
                 self.speed.x += PLAYER_SPEED;
                 break;
         }
+        self.update_direction();
     }
 
     /**
@@ -146,12 +205,12 @@ export default class Player
         switch (state) {
             case eKeyState.down:
                 self.speed.x += PLAYER_SPEED;
-                self.direction = ePlayerDirection.right;
                 break;
             case eKeyState.up:
                 self.speed.x -= PLAYER_SPEED;
                 break;
         }
+        self.update_direction();
     }
 
     /**
