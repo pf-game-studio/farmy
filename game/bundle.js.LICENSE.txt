@@ -168,7 +168,11 @@ and limitations under the License.
 
 /*! ../../data/default_inventory */
 
+/*! ../../data/default_map */
+
 /*! ../../data/globals */
+
+/*! ../../entities/ground_tile */
 
 /*! ../../event/key_handler */
 
@@ -183,6 +187,8 @@ and limitations under the License.
 /*! ../inventory */
 
 /*! ../item */
+
+/*! ../items/item */
 
 /*! ./allSettled */
 

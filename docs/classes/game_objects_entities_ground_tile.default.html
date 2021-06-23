@@ -98,11 +98,15 @@
 								<li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-overwrite"><a href="game_objects_entities_ground_tile.default.html#constructor" class="tsd-kind-icon">constructor</a></li>
 							</ul>
 						</section>
-						<section class="tsd-index-section tsd-is-inherited tsd-is-private-protected">
+						<section class="tsd-index-section tsd-is-private-protected">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="game_objects_entities_ground_tile.default.html#map" class="tsd-kind-icon">map</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="game_objects_entities_ground_tile.default.html#plowable" class="tsd-kind-icon">plowable</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="game_objects_entities_ground_tile.default.html#plowed" class="tsd-kind-icon">plowed</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-protected"><a href="game_objects_entities_ground_tile.default.html#sprite" class="tsd-kind-icon">sprite</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-protected"><a href="game_objects_entities_ground_tile.default.html#texture" class="tsd-kind-icon">texture</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="game_objects_entities_ground_tile.default.html#watered" class="tsd-kind-icon">watered</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
@@ -112,6 +116,9 @@
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="game_objects_entities_ground_tile.default.html#center_position" class="tsd-kind-icon">center_<wbr>position</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="game_objects_entities_ground_tile.default.html#collides" class="tsd-kind-icon">collides</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="game_objects_entities_ground_tile.default.html#get_sprite" class="tsd-kind-icon">get_<wbr>sprite</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="game_objects_entities_ground_tile.default.html#interact" class="tsd-kind-icon">interact</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="game_objects_entities_ground_tile.default.html#on_plow" class="tsd-kind-icon">on_<wbr>plow</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="game_objects_entities_ground_tile.default.html#on_water" class="tsd-kind-icon">on_<wbr>water</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="game_objects_entities_ground_tile.default.html#point_collides" class="tsd-kind-icon">point_<wbr>collides</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected"><a href="game_objects_entities_ground_tile.default.html#set_position" class="tsd-kind-icon">set_<wbr>position</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="game_objects_entities_ground_tile.default.html#set_texture" class="tsd-kind-icon">set_<wbr>texture</a></li>
@@ -128,14 +135,14 @@
 					<a name="constructor" class="tsd-anchor"></a>
 					<h3>constructor</h3>
 					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class tsd-is-overwrite">
-						<li class="tsd-signature tsd-kind-icon">new default<span class="tsd-signature-symbol">(</span>texture<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Texture</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Resource</span><span class="tsd-signature-symbol">&gt;</span>, parent<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Container</span>, position<span class="tsd-signature-symbol">: </span><a href="../interfaces/game_objects_entities_entity.ivector.html" class="tsd-signature-type" data-tsd-kind="Interface">iVector</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="game_objects_entities_ground_tile.default.html" class="tsd-signature-type" data-tsd-kind="Class">default</a></li>
+						<li class="tsd-signature tsd-kind-icon">new default<span class="tsd-signature-symbol">(</span>texture<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Texture</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Resource</span><span class="tsd-signature-symbol">&gt;</span>, map<span class="tsd-signature-symbol">: </span><a href="game_objects_game_map.default.html" class="tsd-signature-type" data-tsd-kind="Class">default</a>, parent<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Container</span>, position<span class="tsd-signature-symbol">: </span><a href="../interfaces/game_objects_entities_entity.ivector.html" class="tsd-signature-type" data-tsd-kind="Interface">iVector</a>, plowable<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="game_objects_entities_ground_tile.default.html" class="tsd-signature-type" data-tsd-kind="Class">default</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<p>Overrides <a href="game_objects_entities_entity.default.html">default</a>.<a href="game_objects_entities_entity.default.html#constructor">constructor</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pf-game-studio/farmy/blob/15c2cb4/src/game_objects/entities/ground_tile.ts#L7">src/game_objects/entities/ground_tile.ts:7</a></li>
+									<li>Defined in <a href="https://github.com/pf-game-studio/farmy/blob/42f66ff/src/game_objects/entities/ground_tile.ts#L21">src/game_objects/entities/ground_tile.ts:21</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -144,10 +151,16 @@
 									<h5>texture: <span class="tsd-signature-type">Texture</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Resource</span><span class="tsd-signature-symbol">&gt;</span></h5>
 								</li>
 								<li>
+									<h5>map: <a href="game_objects_game_map.default.html" class="tsd-signature-type" data-tsd-kind="Class">default</a></h5>
+								</li>
+								<li>
 									<h5>parent: <span class="tsd-signature-type">Container</span></h5>
 								</li>
 								<li>
 									<h5>position: <a href="../interfaces/game_objects_entities_entity.ivector.html" class="tsd-signature-type" data-tsd-kind="Interface">iVector</a></h5>
+								</li>
+								<li>
+									<h5>plowable: <span class="tsd-signature-type">boolean</span></h5>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="game_objects_entities_ground_tile.default.html" class="tsd-signature-type" data-tsd-kind="Class">default</a></h4>
@@ -155,8 +168,38 @@
 					</ul>
 				</section>
 			</section>
-			<section class="tsd-panel-group tsd-member-group tsd-is-inherited tsd-is-private-protected">
+			<section class="tsd-panel-group tsd-member-group tsd-is-private-protected">
 				<h2>Properties</h2>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a name="map" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> map</h3>
+					<div class="tsd-signature tsd-kind-icon">map<span class="tsd-signature-symbol">:</span> <a href="game_objects_game_map.default.html" class="tsd-signature-type" data-tsd-kind="Class">default</a></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/pf-game-studio/farmy/blob/42f66ff/src/game_objects/entities/ground_tile.ts#L21">src/game_objects/entities/ground_tile.ts:21</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a name="plowable" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> plowable</h3>
+					<div class="tsd-signature tsd-kind-icon">plowable<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/pf-game-studio/farmy/blob/42f66ff/src/game_objects/entities/ground_tile.ts#L18">src/game_objects/entities/ground_tile.ts:18</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a name="plowed" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> plowed</h3>
+					<div class="tsd-signature tsd-kind-icon">plowed<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/pf-game-studio/farmy/blob/42f66ff/src/game_objects/entities/ground_tile.ts#L19">src/game_objects/entities/ground_tile.ts:19</a></li>
+						</ul>
+					</aside>
+				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
 					<a name="sprite" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagProtected">Protected</span> sprite</h3>
@@ -164,7 +207,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="game_objects_entities_entity.default.html">default</a>.<a href="game_objects_entities_entity.default.html#sprite">sprite</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/pf-game-studio/farmy/blob/15c2cb4/src/game_objects/entities/entity.ts#L15">src/game_objects/entities/entity.ts:15</a></li>
+							<li>Defined in <a href="https://github.com/pf-game-studio/farmy/blob/42f66ff/src/game_objects/entities/entity.ts#L15">src/game_objects/entities/entity.ts:15</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -175,7 +218,17 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="game_objects_entities_entity.default.html">default</a>.<a href="game_objects_entities_entity.default.html#texture">texture</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/pf-game-studio/farmy/blob/15c2cb4/src/game_objects/entities/entity.ts#L14">src/game_objects/entities/entity.ts:14</a></li>
+							<li>Defined in <a href="https://github.com/pf-game-studio/farmy/blob/42f66ff/src/game_objects/entities/entity.ts#L14">src/game_objects/entities/entity.ts:14</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a name="watered" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> watered</h3>
+					<div class="tsd-signature tsd-kind-icon">watered<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/pf-game-studio/farmy/blob/42f66ff/src/game_objects/entities/ground_tile.ts#L20">src/game_objects/entities/ground_tile.ts:20</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -186,14 +239,14 @@
 					<a name="apply_velocity" class="tsd-anchor"></a>
 					<h3>apply_<wbr>velocity</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-						<li class="tsd-signature tsd-kind-icon">apply_<wbr>velocity<span class="tsd-signature-symbol">(</span>vel<span class="tsd-signature-symbol">: </span><a href="../interfaces/game_objects_entities_entity.ivector.html" class="tsd-signature-type" data-tsd-kind="Interface">iVector</a>, delta<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+						<li class="tsd-signature tsd-kind-icon">apply_<wbr>velocity<span class="tsd-signature-symbol">(</span>vel_<span class="tsd-signature-symbol">: </span><a href="../interfaces/game_objects_entities_entity.ivector.html" class="tsd-signature-type" data-tsd-kind="Interface">iVector</a>, delta<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="game_objects_entities_entity.default.html">default</a>.<a href="game_objects_entities_entity.default.html#apply_velocity">apply_velocity</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pf-game-studio/farmy/blob/15c2cb4/src/game_objects/entities/entity.ts#L100">src/game_objects/entities/entity.ts:100</a></li>
+									<li>Defined in <a href="https://github.com/pf-game-studio/farmy/blob/42f66ff/src/game_objects/entities/entity.ts#L100">src/game_objects/entities/entity.ts:100</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -204,7 +257,7 @@
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>vel: <a href="../interfaces/game_objects_entities_entity.ivector.html" class="tsd-signature-type" data-tsd-kind="Interface">iVector</a></h5>
+									<h5>vel_: <a href="../interfaces/game_objects_entities_entity.ivector.html" class="tsd-signature-type" data-tsd-kind="Interface">iVector</a></h5>
 									<div class="tsd-comment tsd-typography">
 										<p>velocidade atual</p>
 									</div>
@@ -231,7 +284,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="game_objects_entities_entity.default.html">default</a>.<a href="game_objects_entities_entity.default.html#center_position">center_position</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pf-game-studio/farmy/blob/15c2cb4/src/game_objects/entities/entity.ts#L31">src/game_objects/entities/entity.ts:31</a></li>
+									<li>Defined in <a href="https://github.com/pf-game-studio/farmy/blob/42f66ff/src/game_objects/entities/entity.ts#L31">src/game_objects/entities/entity.ts:31</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <a href="../interfaces/game_objects_entities_entity.ivector.html" class="tsd-signature-type" data-tsd-kind="Interface">iVector</a></h4>
@@ -250,7 +303,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="game_objects_entities_entity.default.html">default</a>.<a href="game_objects_entities_entity.default.html#collides">collides</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pf-game-studio/farmy/blob/15c2cb4/src/game_objects/entities/entity.ts#L68">src/game_objects/entities/entity.ts:68</a></li>
+									<li>Defined in <a href="https://github.com/pf-game-studio/farmy/blob/42f66ff/src/game_objects/entities/entity.ts#L68">src/game_objects/entities/entity.ts:68</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -283,11 +336,86 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="game_objects_entities_entity.default.html">default</a>.<a href="game_objects_entities_entity.default.html#get_sprite">get_sprite</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pf-game-studio/farmy/blob/15c2cb4/src/game_objects/entities/entity.ts#L58">src/game_objects/entities/entity.ts:58</a></li>
+									<li>Defined in <a href="https://github.com/pf-game-studio/farmy/blob/42f66ff/src/game_objects/entities/entity.ts#L58">src/game_objects/entities/entity.ts:58</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Sprite</span></h4>
 							<p>sprite do objeto</p>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="interact" class="tsd-anchor"></a>
+					<h3>interact</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">interact<span class="tsd-signature-symbol">(</span>tool<span class="tsd-signature-symbol">: </span><a href="game_objects_items_item.tool.html" class="tsd-signature-type" data-tsd-kind="Class">Tool</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/pf-game-studio/farmy/blob/42f66ff/src/game_objects/entities/ground_tile.ts#L53">src/game_objects/entities/ground_tile.ts:53</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Interage com uma ferramenta específica</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>tool: <a href="game_objects_items_item.tool.html" class="tsd-signature-type" data-tsd-kind="Class">Tool</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>ferramenta que está interagindo</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="on_plow" class="tsd-anchor"></a>
+					<h3>on_<wbr>plow</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">on_<wbr>plow<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/pf-game-studio/farmy/blob/42f66ff/src/game_objects/entities/ground_tile.ts#L67">src/game_objects/entities/ground_tile.ts:67</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Ação de quando o jogador está arando a terra</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="on_water" class="tsd-anchor"></a>
+					<h3>on_<wbr>water</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">on_<wbr>water<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/pf-game-studio/farmy/blob/42f66ff/src/game_objects/entities/ground_tile.ts#L77">src/game_objects/entities/ground_tile.ts:77</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Ação de quando o jogador está molhando a terra</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -302,7 +430,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="game_objects_entities_entity.default.html">default</a>.<a href="game_objects_entities_entity.default.html#point_collides">point_collides</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pf-game-studio/farmy/blob/15c2cb4/src/game_objects/entities/entity.ts#L80">src/game_objects/entities/entity.ts:80</a></li>
+									<li>Defined in <a href="https://github.com/pf-game-studio/farmy/blob/42f66ff/src/game_objects/entities/entity.ts#L80">src/game_objects/entities/entity.ts:80</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -342,7 +470,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="game_objects_entities_entity.default.html">default</a>.<a href="game_objects_entities_entity.default.html#set_position">set_position</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pf-game-studio/farmy/blob/15c2cb4/src/game_objects/entities/entity.ts#L125">src/game_objects/entities/entity.ts:125</a></li>
+									<li>Defined in <a href="https://github.com/pf-game-studio/farmy/blob/42f66ff/src/game_objects/entities/entity.ts#L130">src/game_objects/entities/entity.ts:130</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -374,7 +502,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pf-game-studio/farmy/blob/15c2cb4/src/game_objects/entities/ground_tile.ts#L19">src/game_objects/entities/ground_tile.ts:19</a></li>
+									<li>Defined in <a href="https://github.com/pf-game-studio/farmy/blob/42f66ff/src/game_objects/entities/ground_tile.ts#L44">src/game_objects/entities/ground_tile.ts:44</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -406,7 +534,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="game_objects_entities_entity.default.html">default</a>.<a href="game_objects_entities_entity.default.html#size">size</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pf-game-studio/farmy/blob/15c2cb4/src/game_objects/entities/entity.ts#L51">src/game_objects/entities/entity.ts:51</a></li>
+									<li>Defined in <a href="https://github.com/pf-game-studio/farmy/blob/42f66ff/src/game_objects/entities/entity.ts#L51">src/game_objects/entities/entity.ts:51</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <a href="../interfaces/game_objects_entities_entity.ivector.html" class="tsd-signature-type" data-tsd-kind="Interface">iVector</a></h4>
@@ -425,7 +553,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="game_objects_entities_entity.default.html">default</a>.<a href="game_objects_entities_entity.default.html#topleft_position">topleft_position</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pf-game-studio/farmy/blob/15c2cb4/src/game_objects/entities/entity.ts#L41">src/game_objects/entities/entity.ts:41</a></li>
+									<li>Defined in <a href="https://github.com/pf-game-studio/farmy/blob/42f66ff/src/game_objects/entities/entity.ts#L41">src/game_objects/entities/entity.ts:41</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <a href="../interfaces/game_objects_entities_entity.ivector.html" class="tsd-signature-type" data-tsd-kind="Interface">iVector</a></h4>
@@ -496,6 +624,9 @@
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
+					<li class=" tsd-kind-enum tsd-parent-kind-module">
+						<a href="../enums/game_objects_entities_ground_tile.etileaction.html" class="tsd-kind-icon">e<wbr>Tile<wbr>Action</a>
+					</li>
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-class tsd-parent-kind-module">
@@ -504,11 +635,23 @@
 							<li class=" tsd-kind-constructor tsd-parent-kind-class tsd-is-overwrite">
 								<a href="game_objects_entities_ground_tile.default.html#constructor" class="tsd-kind-icon">constructor</a>
 							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+								<a href="game_objects_entities_ground_tile.default.html#map" class="tsd-kind-icon">map</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+								<a href="game_objects_entities_ground_tile.default.html#plowable" class="tsd-kind-icon">plowable</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+								<a href="game_objects_entities_ground_tile.default.html#plowed" class="tsd-kind-icon">plowed</a>
+							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
 								<a href="game_objects_entities_ground_tile.default.html#sprite" class="tsd-kind-icon">sprite</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
 								<a href="game_objects_entities_ground_tile.default.html#texture" class="tsd-kind-icon">texture</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+								<a href="game_objects_entities_ground_tile.default.html#watered" class="tsd-kind-icon">watered</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
 								<a href="game_objects_entities_ground_tile.default.html#apply_velocity" class="tsd-kind-icon">apply_<wbr>velocity</a>
@@ -521,6 +664,15 @@
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
 								<a href="game_objects_entities_ground_tile.default.html#get_sprite" class="tsd-kind-icon">get_<wbr>sprite</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="game_objects_entities_ground_tile.default.html#interact" class="tsd-kind-icon">interact</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="game_objects_entities_ground_tile.default.html#on_plow" class="tsd-kind-icon">on_<wbr>plow</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="game_objects_entities_ground_tile.default.html#on_water" class="tsd-kind-icon">on_<wbr>water</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
 								<a href="game_objects_entities_ground_tile.default.html#point_collides" class="tsd-kind-icon">point_<wbr>collides</a>
@@ -568,6 +720,9 @@
 			</ul>
 			<ul class="tsd-legend">
 				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited method</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private property</span></li>
 			</ul>
 		</div>
 	</div>
