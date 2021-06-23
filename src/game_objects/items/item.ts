@@ -1,3 +1,4 @@
+import { eTileAction } from '../entities/ground_tile';
 import { eItemId } from './item_ids';
 
 export type tItemData = {
@@ -12,4 +13,5 @@ export abstract class Item {
 
 export abstract class Tool extends Item {
     readonly stack_size: number = 1;
+    abstract readonly action: eTileAction;
 }

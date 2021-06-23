@@ -94,10 +94,15 @@ export default abstract class Entity {
     /**
      * Aplica uma velocidade constante por um determinado tempo ao sprite atual.
      *
-     * @param vel velocidade atual
+     * @param vel_ velocidade atual
      * @param delta tempo para aplicar a velocidade
      */
-    apply_velocity(vel: iVector, delta: number): void {
+    apply_velocity(vel_: iVector, delta: number): void {
+        const vel: iVector = { ...vel_ };
+        if (vel.x != 0 && vel.y != 0) {
+            vel.x /= 2 ** 0.5;
+            vel.y /= 2 ** 0.5;
+        }
         let x = this.sprite.x + vel.x * delta;
         let y = this.sprite.y + vel.y * delta;
 
