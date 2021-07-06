@@ -7,5 +7,8 @@ export const GLOBALS = {
     inventory_size: 10,
     inventory_tile_width: 64,
 
-    max_hour: 24
+    max_hour: 24,
+    initial_hour: 6,
+    minutes_in_hour: 60,
+    delta_in_seconds: 200
 };

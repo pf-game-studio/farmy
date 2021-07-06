@@ -73,7 +73,12 @@ export default class TimingManager implements Updatable {
      * @returns hora atual em inteiro
      */
     hour(): number {
-        return 6 + Math.floor(this.time / (200 * 60));
+        return (
+            GLOBALS.initial_hour +
+            Math.floor(
+                this.time / (GLOBALS.delta_in_seconds * GLOBALS.minutes_in_hour)
+            )
+        );
     }
 
     /**
@@ -88,7 +93,10 @@ export default class TimingManager implements Updatable {
      * @returns minuto atual em inteiro
      */
     minute(): number {
-        return Math.floor(this.time / 200) % 60;
+        return (
+            Math.floor(this.time / GLOBALS.delta_in_seconds) %
+            GLOBALS.minutes_in_hour
+        );
     }
 
     /**
