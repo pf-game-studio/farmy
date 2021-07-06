@@ -31,7 +31,7 @@ export default class Game extends Application {
         this.camera = this.create_camera();
         this.map_container = this.create_map_container(this.camera);
 
-        const text = new Text('06:00', { fontSize: 24 });
+        const text = new Text(`0${GLOBALS.initial_hour}:00`, { fontSize: 24 });
         this.camera.parent.addChild(text);
 
         this.map = new GameMap(
