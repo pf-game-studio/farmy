@@ -206,6 +206,8 @@ and limitations under the License.
 
 /*! ./event/key_handler */
 
+/*! ./event/timing_manager */
+
 /*! ./event/updater */
 
 /*! ./finally */
@@ -363,6 +365,10 @@ and limitations under the License.
 /*!**********************************!*\
   !*** ./src/event/key_handler.ts ***!
   \**********************************/
+
+/*!*************************************!*\
+  !*** ./src/event/timing_manager.ts ***!
+  \*************************************/
 
 /*!**************************************!*\
   !*** ./src/game_objects/game_map.ts ***!
