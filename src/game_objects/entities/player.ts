@@ -11,6 +11,7 @@ import default_inventory_data from '../../data/default_inventory';
 import default_map from '../../data/default_map';
 import { Item, Tool } from '../items/item';
 import GameMap from '../game_map';
+import { TimeSensitive } from '../../event/timing_manager';
 
 const PLAYER_SPEED = 1;
 
@@ -29,7 +30,7 @@ enum ePlayerDirection {
  */
 export default class Player
     extends Entity
-    implements iKeyRegistrable, Updatable
+    implements iKeyRegistrable, Updatable, TimeSensitive
 {
     private speed: iVector;
     private do_action: boolean;
@@ -54,6 +55,14 @@ export default class Player
         this.do_action = false;
         this.inventory = new Inventory(default_inventory_data, parent.parent);
     }
+
+    /**
+     * O jogador deve desmaiar quando há um novo dia e não está dormindo. Caso
+     * esteja dormindo, nada de ruim acontece.
+     *
+     * @param _
+     */
+    on_new_day(_: number): void {}
 
     /**
      * Registra seus callbacks no gerenciador de teclas
