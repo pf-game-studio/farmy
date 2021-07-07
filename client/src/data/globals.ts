@@ -12,5 +12,7 @@ export const GLOBALS = {
     minutes_in_hour: 60,
     delta_in_seconds: 200,
 
-    player_dir: './assets/cat/'
+    player_dir: './assets/cat/',
+
+    server_addr: 'http://localhost:1234'
 };

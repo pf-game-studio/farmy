@@ -7,6 +7,7 @@ import Updater from './event/updater';
 import GameMap from './game_objects/game_map';
 import Player from './game_objects/entities/player';
 import TimingManager from './event/timing_manager';
+import ServerManager from './server_manager';
 
 settings.SCALE_MODE = SCALE_MODES.NEAREST;
 
@@ -21,6 +22,8 @@ export default class Game extends Application {
     private updater: Updater;
     private key_handler: KeyHandler;
     private time_manager: TimingManager;
+    // @ts-ignore no unused variable
+    private server_manager: ServerManager;
     // @ts-ignore no unused variable
     private map: GameMap;
 
@@ -39,14 +42,11 @@ export default class Game extends Application {
             this.map_container,
             default_map_data
         );
-        this.player = new Player(
-            this.map,
-            this.camera,
-            true
-        );
+        this.player = new Player(this.map, this.camera, true);
         this.key_handler = new KeyHandler();
         this.updater = new Updater();
         this.time_manager = new TimingManager(text);
+        this.server_manager = new ServerManager();
 
         this.key_handler.register(this.player);
         this.updater.add_updatable(this.player);
