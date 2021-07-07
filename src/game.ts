@@ -40,7 +40,6 @@ export default class Game extends Application {
             default_map_data
         );
         this.player = new Player(
-            './assets/cat.png',
             this.map,
             this.camera,
             true

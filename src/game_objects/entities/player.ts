@@ -12,6 +12,8 @@ import default_map from '../../data/default_map';
 import { Item, Tool } from '../items/item';
 import GameMap from '../game_map';
 import { TimeSensitive } from '../../event/timing_manager';
+import { Texture } from 'pixi.js';
+import { GLOBALS } from '../../data/globals';
 
 const PLAYER_SPEED = 1;
 
@@ -24,6 +26,14 @@ enum ePlayerDirection {
     up,
     down
 }
+
+const direction_texture_lut = {
+    [ePlayerDirection.left]: Texture.from(GLOBALS.player_dir + 'left.png'),
+    [ePlayerDirection.right]: Texture.from(GLOBALS.player_dir + 'right.png'),
+    [ePlayerDirection.up]: Texture.from(GLOBALS.player_dir + 'back.png'),
+    [ePlayerDirection.down]: Texture.from(GLOBALS.player_dir + 'front.png')
+};
+
 
 /**
  * Objeto do jogador
@@ -39,12 +49,11 @@ export default class Player
     private map: GameMap;
 
     constructor(
-        texture_path: string,
         map: GameMap,
         parent: Viewport,
         main: boolean
     ) {
-        super(texture_path, parent);
+        super(direction_texture_lut[ePlayerDirection.right], parent);
         if (main) {
             parent.follow(this.sprite);
         }
@@ -56,6 +65,9 @@ export default class Player
         this.inventory = new Inventory(default_inventory_data, parent.parent);
     }
 
+    update_texture(): void {
+        this.sprite.texture = direction_texture_lut[this.direction];
+    }
     /**
      * O jogador deve desmaiar quando há um novo dia e não está dormindo. Caso
      * esteja dormindo, nada de ruim acontece.
@@ -123,6 +135,7 @@ export default class Player
         } else if (this.speed.y < 0) {
             this.direction = ePlayerDirection.up;
         }
+        this.update_texture();
     }
 
     /**

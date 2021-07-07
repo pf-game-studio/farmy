@@ -10,5 +10,7 @@ export const GLOBALS = {
     max_hour: 24,
     initial_hour: 6,
     minutes_in_hour: 60,
-    delta_in_seconds: 200
+    delta_in_seconds: 200,
+
+    player_dir: './assets/cat/'
 };
