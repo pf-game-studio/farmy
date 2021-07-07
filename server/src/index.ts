@@ -1,13 +1,19 @@
 import express from 'express';
 import { createServer } from 'http';
 import { Server } from 'socket.io';
+import connection_controller from './controllers/connection_controller';
 
-const server = express();
-const httpServer = createServer(server);
-const io = new Server(httpServer, {});
-
-io.on('connection', socket => {
-    console.log(socket.id);
+const app = express();
+const httpServer = createServer(app);
+const io = new Server(httpServer, {
+    cors: {
+        origin: 'http://localhost:5000',
+        methods: ['GET', 'POST']
+    }
 });
 
-httpServer.listen(1234);
+io.on('connection', connection_controller.on_connection);
+
+httpServer.listen(1234, () => {
+    console.log('listening on *:1234');
+});
