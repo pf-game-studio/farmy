@@ -2,7 +2,7 @@ import { Socket } from 'socket.io';
 import user from '../database/users';
 import jwt from 'jsonwebtoken';
 
-export interface iRegisterArgs {
+interface iRegisterArgs {
     username: string;
     password: string;
 }
@@ -21,6 +21,8 @@ export default {
                 console.log('register success');
             } else {
                 console.log('register failed');
+                socket.emit('nack', { reason: 'invalid_auth' });
+                return;
             }
 
             socket.emit('rack', { token });
