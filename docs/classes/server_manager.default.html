@@ -68,6 +68,13 @@
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-comment">
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>Gerenciador das conexões com o servidor de mídia.</p>
+					</div>
+				</div>
+			</section>
 			<section class="tsd-panel tsd-hierarchy">
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
@@ -89,13 +96,17 @@
 						<section class="tsd-index-section tsd-is-private tsd-is-private-protected">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="server_manager.default.html#audio" class="tsd-kind-icon">audio</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="server_manager.default.html#connection" class="tsd-kind-icon">connection</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="server_manager.default.html#socket" class="tsd-kind-icon">socket</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="server_manager.default.html#stream" class="tsd-kind-icon">stream</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="server_manager.default.html#token" class="tsd-kind-icon">token</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="server_manager.default.html#connect_media" class="tsd-kind-icon">connect_<wbr>media</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="server_manager.default.html#do_auth" class="tsd-kind-icon">do_<wbr>auth</a></li>
 							</ul>
 						</section>
@@ -114,7 +125,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pf-game-studio/farmy/blob/e05fc73/client/src/server_manager.ts#L12">src/server_manager.ts:12</a></li>
+									<li>Defined in <a href="https://github.com/pf-game-studio/farmy/blob/cb01ad4/client/src/server_manager.ts#L42">src/server_manager.ts:42</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <a href="server_manager.default.html" class="tsd-signature-type" data-tsd-kind="Class">default</a></h4>
@@ -125,12 +136,42 @@
 			<section class="tsd-panel-group tsd-member-group tsd-is-private tsd-is-private-protected">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a name="audio" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> audio</h3>
+					<div class="tsd-signature tsd-kind-icon">audio<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">HTMLAudioElement</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/pf-game-studio/farmy/blob/cb01ad4/client/src/server_manager.ts#L40">src/server_manager.ts:40</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a name="connection" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> connection</h3>
+					<div class="tsd-signature tsd-kind-icon">connection<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">iConnection</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/pf-game-studio/farmy/blob/cb01ad4/client/src/server_manager.ts#L42">src/server_manager.ts:42</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
 					<a name="socket" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagPrivate">Private</span> socket</h3>
 					<div class="tsd-signature tsd-kind-icon">socket<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Socket</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">DefaultEventsMap</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">DefaultEventsMap</span><span class="tsd-signature-symbol">&gt;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/pf-game-studio/farmy/blob/e05fc73/client/src/server_manager.ts#L10">src/server_manager.ts:10</a></li>
+							<li>Defined in <a href="https://github.com/pf-game-studio/farmy/blob/cb01ad4/client/src/server_manager.ts#L38">src/server_manager.ts:38</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a name="stream" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> <span class="tsd-flag ts-flagOptional">Optional</span> stream</h3>
+					<div class="tsd-signature tsd-kind-icon">stream<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">MediaStream</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/pf-game-studio/farmy/blob/cb01ad4/client/src/server_manager.ts#L41">src/server_manager.ts:41</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -140,13 +181,35 @@
 					<div class="tsd-signature tsd-kind-icon">token<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/pf-game-studio/farmy/blob/e05fc73/client/src/server_manager.ts#L12">src/server_manager.ts:12</a></li>
+							<li>Defined in <a href="https://github.com/pf-game-studio/farmy/blob/cb01ad4/client/src/server_manager.ts#L39">src/server_manager.ts:39</a></li>
 						</ul>
 					</aside>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Methods</h2>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="connect_media" class="tsd-anchor"></a>
+					<h3>connect_<wbr>media</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">connect_<wbr>media<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/pf-game-studio/farmy/blob/cb01ad4/client/src/server_manager.ts#L85">src/server_manager.ts:85</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Faz a negociação de mídia e conecta o microfone do usuário.</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
 					<a name="do_auth" class="tsd-anchor"></a>
 					<h3>do_<wbr>auth</h3>
@@ -157,9 +220,15 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pf-game-studio/farmy/blob/e05fc73/client/src/server_manager.ts#L31">src/server_manager.ts:31</a></li>
+									<li>Defined in <a href="https://github.com/pf-game-studio/farmy/blob/cb01ad4/client/src/server_manager.ts#L71">src/server_manager.ts:71</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Executa a autenticação no servidor. Responsável por pedir ao usuário o
+									usuário e senha.</p>
+								</div>
+							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 						</li>
 					</ul>
@@ -242,10 +311,22 @@
 								<a href="server_manager.default.html#constructor" class="tsd-kind-icon">constructor</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+								<a href="server_manager.default.html#audio" class="tsd-kind-icon">audio</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+								<a href="server_manager.default.html#connection" class="tsd-kind-icon">connection</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
 								<a href="server_manager.default.html#socket" class="tsd-kind-icon">socket</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+								<a href="server_manager.default.html#stream" class="tsd-kind-icon">stream</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
 								<a href="server_manager.default.html#token" class="tsd-kind-icon">token</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="server_manager.default.html#connect_media" class="tsd-kind-icon">connect_<wbr>media</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="server_manager.default.html#do_auth" class="tsd-kind-icon">do_<wbr>auth</a>
