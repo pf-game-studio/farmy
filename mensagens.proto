@@ -27,14 +27,79 @@ message Message {
 // =============================================================================
 
 /** 
- *  A mensagem de registro possui um usuário, senha e um identificador único das
- *  salas (namespaces). Quando o identificador de sala não é utilizado, o
- *  servidor cria uma nova.
+ *  A mensagem de registro possui um usuário e senha. Na resposta, o servidor
+ *  envia o token gerado para essa autenticação.
  */
 message Register {
     string username = 1;
     string password = 2;
 }
+
+/**
+ *  A mensagem que um cliente envia para trocar mídias.
+ */
+message Invite {
+    string token = 1;
+}
+
+/**
+ *  O servidor envia a mensagem de outros usuários quando um novo usuário se
+ *  conecta para trocar mídias. Os parâmetros são os socket-ids dos jogadores.
+ */
+message Other_users {
+    optional string first = 1;
+    optional string second = 2;
+}
+
+/**
+ *  Mensagem enviada pelo cliente quando a oferta está pronta. O outro cliente é
+ *  especificado no campo destination, a descrição SDP é enviada no campo
+ *  description.
+ *
+ *  Esta mensagem também pode ser enviada pelo servidor para um outro cliente,
+ *  quando isso acontece não é enviado um token de autorização.
+ */
+message Offer {
+    optional string token = 1;
+    string destination = 2;
+    string description = 3;
+}
+
+/**
+ *  Mensagem enviada pelo cliente quando a resposta está pronta. O outro cliente
+ *  é especificado no campo destination, a descrição SDP é enviada no campo
+ *  description.
+ *
+ *  Esta mensagem também pode ser enviada pelo servidor para um outro cliente,
+ *  quando isso acontece não é enviado um token de autorização.
+ */
+message Answer {
+    optional string token = 1;
+    string destination = 2;
+    string description = 3;
+}
+
+/**
+ *  Mensagem enviada pelo cliente quando um ice-candidate está disponível. O
+ *  outro cliente é especificado no campo destination, a descrição SDP é enviada
+ *  no campo description.
+ *
+ *  Esta mensagem também pode ser enviada pelo servidor para um outro cliente,
+ *  quando isso acontece não é enviado um token de autorização.
+ */
+message Candidate {
+    optional string token = 1;
+    string destination = 2;
+    string candidate = 3;
+}
+
+/**
+ *  Mensagem enviada pelo cliente quando ele quer sair da troca de mídia.
+ */
+message bye {
+    string token = 1;
+}
+
 
 // =============================================================================
 // ==================================respostas==================================
@@ -45,9 +110,9 @@ message Register {
  *  valores definidos em um enumerado, e são:
  *
  *
- *  invalid_auth = 1;   Usuário ou senha estão errados ou não encontrados
- *  invalid_token = 2;  Token único não reconhecido.
- *
+ *  invalid_auth    = 1;    Usuário ou senha estão errados ou não encontrados
+ *  invalid_token   = 2;    Token único não reconhecido.
+ *  full-room       = 3;    Sala cheia.
  *
  *
  */

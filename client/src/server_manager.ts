@@ -31,6 +31,9 @@ interface iConnection {
 
 const iceServers = [{ urls: 'stun:stun.l.google.com:19302' }];
 
+/**
+ * Gerenciador das conexões com o servidor de mídia.
+ */
 export default class ServerManager {
     private socket: Socket;
     private token: string;
@@ -61,6 +64,10 @@ export default class ServerManager {
         this.do_auth();
     }
 
+    /**
+     * Executa a autenticação no servidor. Responsável por pedir ao usuário o
+     * usuário e senha.
+     */
     do_auth() {
         const username = window.prompt('Digite seu usuário');
         const password = window.prompt('Digite sua senha');
@@ -72,7 +79,11 @@ export default class ServerManager {
         }
     }
 
+    /**
+     * Faz a negociação de mídia e conecta o microfone do usuário.
+     */
     async connect_media() {
+        console.log('connecting media!');
         this.stream = await navigator.mediaDevices.getUserMedia({
             video: false,
             audio: true
@@ -92,6 +103,7 @@ export default class ServerManager {
                 this.connection.local.onicecandidate = ({ candidate }) => {
                     candidate &&
                         this.socket.emit('candidate', {
+                            token: this.token,
                             destination: args.first,
                             candidate
                         });
@@ -108,6 +120,7 @@ export default class ServerManager {
                     )
                     .then(() => {
                         this.socket.emit('offer', {
+                            token: this.token,
                             destination: args.first,
                             description: this.connection.local?.localDescription
                         });
@@ -127,6 +140,7 @@ export default class ServerManager {
             remote.onicecandidate = ({ candidate }) => {
                 candidate &&
                     this.socket.emit('candidate', {
+                        token: this.token,
                         destination: args.origin,
                         candidate
                     });
@@ -142,6 +156,7 @@ export default class ServerManager {
                 .then(answer => remote.setLocalDescription(answer))
                 .then(() => {
                     this.socket.emit('answer', {
+                        token: this.token,
                         destination: args.origin,
                         description: remote.localDescription
                     });
