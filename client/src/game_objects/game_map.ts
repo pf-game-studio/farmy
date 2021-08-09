@@ -32,7 +32,12 @@ export default class GameMap {
         this.data = map_data;
 
         this.loader.add('map', tile_path).load((_, resources) => {
-            this.load_tiles(resources.map.texture);
+            const texture = resources['map']?.texture;
+            if (!texture) {
+                throw `failed to load map textures`;
+            }
+            // @ts-ignore
+            this.load_tiles(texture);
             this.render();
         });
     }
